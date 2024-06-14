@@ -222,7 +222,7 @@ export default function IndexPage() {
           </Card>
         </motion.div>
 
-        <motion.h3 className={title()}  style={{ marginTop: -175, textAlign:"center" }}  initial={{ opacity: 0, y: 20  }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}>Explore Customer Testimonials</motion.h3>
+        <motion.h3 className={title()}  style={{ marginTop: -200, textAlign:"center" }}  initial={{ opacity: 0, y: 20  }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}>Explore Customer Testimonials</motion.h3>
 
         <CardScroller />
 
