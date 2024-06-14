@@ -1,0 +1,89 @@
+.body
+{
+  cursor: none;
+}
+
+.backgroundContainer {
+  position: relative;
+  width: 99vw;
+  height: 90vh;
+  overflow: hidden;
+  margin-top: -10%;
+}
+
+.backgroundVideo {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  z-index: 0; 
+  opacity: 0.8;
+}
+
+.gradientOverlay {
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  z-index: 1; 
+}
+
+.content {
+  position: relative;
+  z-index: 2; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  top: 30%;
+  text-align: center;
+  color: white; 
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .content {
+    top: 25%;
+  }
+  .gradientOverlay {
+    height: 100%;
+  }
+  .backgroundContainer {
+    height: 75vh;
+    margin-top: -40%;
+  }
+
+}
+
+.scrollerContainer {
+  width: 99vw;
+  overflow: hidden;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.scrollerCard {
+  flex: 0 0 auto;
+  width: 300px; /* Ensure all cards have the same width */
+  height: 200px;
+  margin-right: 1rem; /* Adjust gap between cards */
+}
+
+.scroller {
+  display: flex;
+  gap: 1rem;
+  white-space: nowrap;
+  /* Remove duplicate cards */
+  animation: scroll var(--animation-duration, 60s) linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(calc(-100% - 1rem)); /* Adjust based on card width */
+  }
+}
