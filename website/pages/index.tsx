@@ -1,7 +1,7 @@
 import { title, subtitle } from "@/components/primitives";
 import styles from '../styles/custom.module.css';
 import DefaultLayout from "@/layouts/default";
-import { Card, CardHeader, Image } from "@nextui-org/react";
+import { Button, Card, CardHeader, Image, CardFooter } from "@nextui-org/react";
 import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from "react";
 import { Logo } from "@/components/icons";
@@ -117,19 +117,43 @@ export default function IndexPage() {
           </video>
           <div className={styles.gradientOverlay}></div>
           <div className={styles.content}>
-            <motion.div className="inline-block max-w-lg text-center justify-center mt-50" initial={{ y: 20 }} animate={{ y: 0 }} transition={{ duration: 1 }}>
-              <motion.h1 className={title({ color: "violet" })} initial={{ scale: 0.8 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>Award&nbsp;</motion.h1>
-              <motion.h1 className={title()} initial={{ scale: 0.8 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>Winning&nbsp;</motion.h1>
-              <br />
-              <motion.h1 className={title()} initial={{ scale: 0.8 }} animate={{ scale: 1 }} transition={{ duration: 0.5 }}>Game Development Assets</motion.h1>
-              <motion.h5 className={subtitle({ class: "mt-4" })} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-                Cowsins helps Unity game developers all over the world to create their Dream Games
-              </motion.h5>
-            </motion.div>
+          <motion.div 
+            className="inline-block max-w-lg text-center justify-center mt-50" 
+            initial={{ y: 20 }} 
+            animate={{ y: 0 }} 
+            transition={{ duration: 1 }}
+          >
+            <motion.h1 
+              className={title()} 
+              initial={{ scale: 0.8 }} 
+              animate={{ scale: 1 }} 
+              transition={{ duration: 0.5 }}
+            >
+              <motion.span 
+                className={title({ color: "violet" })} 
+                initial={{ scale: 0.8 }} 
+                animate={{ scale: 1 }} 
+                transition={{ duration: 0.5 }}
+              >
+                Award
+              </motion.span>
+              &nbsp;Winning<br />
+              Game Development Assets
+            </motion.h1>
+            <motion.h2 
+              className={subtitle({ class: "mt-4" })} 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              transition={{ delay: 0.5 }}
+            >
+              Cowsins helps Unity game developers all over the world to create their Dream Games
+            </motion.h2>
+          </motion.div>
+
           </div>
         </motion.div>
 
-        <motion.h2 className={title()} style={{ marginTop: 25 }} initial={{ opacity: 0, y: 20  }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}>Discover the Assets</motion.h2>
+        <motion.h3 className={title()} style={{ marginTop: 25 }} initial={{ opacity: 0, y: 20  }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}>Discover the Assets</motion.h3>
         <div className="max-w-[2000px] gap-1 grid grid-cols-12 grid-rows-2 px-6" style={{ marginTop: 50, marginBottom: 0, paddingBottom: 0}}>
         <motion.div onClick={() => window.open(siteConfig.links.fpsengine, '_blank')}className="col-span-12 sm:col-span-4 h-[300px] cursor-pointer"whileHover={{ scale: 0.95 }}transition={{ duration: .4 }}>
         <Card className="h-full w-full">
@@ -166,8 +190,39 @@ export default function IndexPage() {
         </motion.div>
 
         </div>
+        <motion.h3  className={title()}  style={{ marginTop: isMobile ? 25 : -250, textAlign:"center" }} 
+        initial={{ opacity: 0, y: 20  }} animate={{ opacity: 0.5, y: 0 }} transition={{ delay: 1 }}>Community Packages</motion.h3>
 
-        <motion.h2 className={title()} style={{ marginTop: isMobile ? 25 : -200, textAlign:"center" }}  initial={{ opacity: 0, y: 20  }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}>Explore Customer Testimonials</motion.h2>
+        <motion.div 
+          onClick={() => window.open(siteConfig.links.bullethellengine, '_blank')} 
+          className="max-w-[900px] gap-2 grid grid-rows-2 px-8 cursor-pointer"  
+          style={{ marginTop: 25, textAlign: "center" }}
+          whileHover={{ scale: 0.95 }} 
+          transition={{ duration: 0.4 }}
+        >
+          <Card isFooterBlurred className="w-full h-[250px] col-span-12 sm:col-span-7 relative overflow-hidden group cursor-pointer">
+            <CardHeader className="absolute z-10 top-1 flex-col items-start">
+              <p className="text-tiny text-white/60 uppercase font-bold">FPS Engine Add-On</p>
+              <h4 className="text-white/90 font-medium text-xl">Cowsins AI</h4>
+            </CardHeader>
+            <Image
+              removeWrapper
+              alt="Relaxing app background"
+              className="z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              src="https://public-files.gumroad.com/kjjbk86jfi1iif5t05zmxpirsu5s"
+            />
+            <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+              <div className="flex flex-grow gap-2 items-center">
+                <div className="flex flex-col">
+                  <p className="text-tiny text-white/60">Created by Comrad Elmo</p>
+                </div>
+              </div>
+              <Button radius="full" size="sm">Get Add-On</Button>
+            </CardFooter>
+          </Card>
+        </motion.div>
+
+        <motion.h3 className={title()}  style={{ marginTop: -175, textAlign:"center" }}  initial={{ opacity: 0, y: 20  }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}>Explore Customer Testimonials</motion.h3>
 
         <CardScroller />
 
