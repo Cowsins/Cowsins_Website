@@ -29,6 +29,13 @@ export const Navbar = () => {
     {
       window.open('https://cowsins-ai.gitbook.io/cowsins-ai', '_blank');
     }
+
+    const openFPSEngineDocs = () =>
+      {
+        window.open('https://cowsinss-organization.gitbook.io/fps-engine-documentation', '_blank');
+      }
+
+    
   return (
     <>
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur">
@@ -133,7 +140,7 @@ export const Navbar = () => {
             <DropdownSection title="Unity" showDivider>  
               <DropdownItem
                   key="fpsengine"    
-                  onPress={onOpen}     
+                  onPress={openFPSEngineDocs}     
                 >
                   FPS Engine
                 </DropdownItem>
@@ -367,7 +374,7 @@ export const Navbar = () => {
             <DropdownSection title="Unity" showDivider>  
               <DropdownItem
                   key="fpsengine"    
-                  onPress={onOpen}     
+                  onPress={openFPSEngineDocs}     
                 >
                   FPS Engine
                 </DropdownItem>
