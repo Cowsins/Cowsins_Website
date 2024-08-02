@@ -105,6 +105,12 @@ export const Navbar = () => {
                    Bullet Hell Engine
                  </Link>
                
+                </DropdownItem>  
+                <DropdownItem
+                  key="invpro"
+                  description="Coming Soon"
+                >
+                  Cowins Inspector
                 </DropdownItem>
                 <DropdownItem
                   key="invpro"
@@ -339,6 +345,12 @@ export const Navbar = () => {
                    Bullet Hell Engine
                  </Link>
                
+                </DropdownItem>
+                <DropdownItem
+                  key="invpro"
+                  description="Coming Soon"
+                >
+                  Cowsins Inspector
                 </DropdownItem>
                 <DropdownItem
                   key="invpro"
