@@ -109,6 +109,7 @@ export default function IndexPage() {
 
   return (
     <DefaultLayout>
+      <img src="Best Development Tool Nomination on dark background (1).png" alt="Fixed Image" style={{position:"fixed", zIndex: 999, bottom:35, left:35, width: 70}} />
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <motion.div className={styles.backgroundContainer} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
           <video className={styles.backgroundVideo} autoPlay muted loop>
@@ -155,7 +156,7 @@ export default function IndexPage() {
 
         <motion.h3 className={title()} style={{ marginTop: 25 }} initial={{ opacity: 0, y: 20  }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}>Discover the Assets</motion.h3>
         <div className="max-w-[2000px] gap-1 grid grid-cols-12 grid-rows-2 px-6" style={{ marginTop: 50, marginBottom: 0, paddingBottom: 0}}>
-        <motion.div onClick={() => window.open(siteConfig.links.fpsengine, '_blank')}className="col-span-12 sm:col-span-4 h-[300px] cursor-pointer"whileHover={{ scale: 0.95 }}transition={{ duration: .4 }}>
+        <motion.div onClick={() => window.open(siteConfig.links.fpsengine, '_blank')}className="col-span-12 sm:col-span-4 h-[300px] cursor-pointer"whileHover={{ scale: 0.92 }}initial={{scale: .95}} transition={{ duration: .4 }}>
         <Card className="h-full w-full">
             <CardHeader className="absolute z-10 top-1 flex-col !items-start">
               <p className="text-tiny text-white/60 uppercase font-bold">Best Seller</p>
@@ -166,7 +167,7 @@ export default function IndexPage() {
             <Image removeWrapper alt="Top right corner image" className="absolute top-0 right-0 m-5 z-20 pointer-events-none" src="Best Development Tool Nomination on dark background (1).png" style={{ width: '10%', borderRadius: '0' }} />
           </Card>
           </motion.div>
-          <motion.div onClick={() => window.open(siteConfig.links.platformerengine, '_blank')}className="col-span-12 sm:col-span-4 h-[300px] cursor-pointer"   whileHover={{ scale: 0.95 }} transition={{ duration: .4  }}>
+          <motion.div onClick={() => window.open(siteConfig.links.platformerengine, '_blank')}className="col-span-12 sm:col-span-4 h-[300px] cursor-pointer"  whileHover={{ scale: 0.92 }}initial={{scale: .95}}transition={{ duration: .4  }}>
             <Card className="h-full w-full">
               <CardHeader className="absolute z-10 top-1 flex-col !items-start">
                 <p className="text-tiny text-white/60 uppercase font-bold">Latest Release</p>
@@ -178,7 +179,7 @@ export default function IndexPage() {
           </motion.div>
 
           <motion.div onClick={() => window.open(siteConfig.links.bullethellengine, '_blank')}className="col-span-12 sm:col-span-4 h-[300px] cursor-pointer" 
-               whileHover={{ scale: 0.95 }}transition={{ duration: .4  }}>
+              whileHover={{ scale: 0.92 }}initial={{scale: .95}}transition={{ duration: .4  }}>
           <Card className="h-full w-full">
             <CardHeader className="absolute z-10 top-1 flex-col !items-start">
               <h4 className="text-white font-medium text-large">Bullet Hell Engine</h4>
@@ -194,10 +195,10 @@ export default function IndexPage() {
         initial={{ opacity: 0, y: 20  }} animate={{ opacity: 0.5, y: 0 }} transition={{ delay: 1 }}>Community Packages</motion.h3>
 
         <motion.div 
-          onClick={() => window.open(siteConfig.links.bullethellengine, '_blank')} 
+          onClick={() => window.open(siteConfig.links.cowsinai, '_blank')} 
           className="max-w-[900px] gap-2 grid grid-rows-2 px-8 cursor-pointer"  
           style={{ marginTop: 25, textAlign: "center" }}
-          whileHover={{ scale: 0.95 }} 
+          whileHover={{ scale: 0.92 }}initial={{scale: .95}}
           transition={{ duration: 0.4 }}
         >
           <Card isFooterBlurred className="w-full h-[250px] col-span-12 sm:col-span-7 relative overflow-hidden group cursor-pointer">
@@ -217,7 +218,7 @@ export default function IndexPage() {
                   <p className="text-tiny text-white/60">Created by Comrad Elmo</p>
                 </div>
               </div>
-              <Button radius="full" size="sm">Get Add-On</Button>
+              <Button radius="full" size="sm"  onClick={() => window.open(siteConfig.links.cowsinai, '_blank')} >Get Add-On</Button>
             </CardFooter>
           </Card>
         </motion.div>
