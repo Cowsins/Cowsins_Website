@@ -418,7 +418,7 @@ export default function IndexPage() {
 
         <motion.div
           onClick={() =>
-            window.open(siteConfig.links.bullethellengine, "_blank")
+            window.open(siteConfig.links.cowsinai, "_blank")
           }
           className="max-w-[900px] gap-2 grid grid-rows-2 px-8 cursor-pointer"
           style={{ marginTop: 25, textAlign: "center" }}
