@@ -12,7 +12,7 @@ export const Logo: React.FC<IconSvgProps> = ({
   radius="none"
       width={30}
       alt="NextUI hero Image"
-      src="Cowsins_Logo_White_4k.png"
+      src="Cowsins_Logo_White_4k.webp"
     />
 );
 
