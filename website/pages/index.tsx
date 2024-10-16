@@ -7,107 +7,10 @@ import { useEffect, useState } from "react";
 import { Logo } from "@/components/icons";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/config/site";
+import { cards } from "../utils/cardsData"; 
 
 const CardScroller = () => {
-  const cards = [
-    {
-      author: "BiofrostStudio",
-      title: "Great asset!",
-      description:
-        "Easy to use and understand. Developer responds very quickly on discord!",
-    },
-    {
-      author: "Crygrace",
-      title: "community is super helpful!",
-      description:
-        "it really is just drag and drop or just use the blank scene i have started many projects but i may actually complete one with this assets a lot of useful stuff! ",
-    },
-    {
-      author: "Codegit_09",
-      title: "Fantastic",
-      description:
-        "If you want to make an FPS game in Unity, then this is a GREAT starting point, super simple to use and full of features. Did I say the author releases new features all the time and provides good support. 10/10",
-    },
-    {
-      author: "Florecod000",
-      title: "Amazing for New and Experienced Devs",
-      description:
-        "This asset is amazing for creating fps games, with a little unity knowledge, you can make some great fps games with this asset. I highly recommend purchasing this! ",
-    },
-    { author: "Zexar98", title: "The best!", description: "Amazing job guys" },
-    {
-      author: "Thanhnhatff",
-      title: "Very good",
-      description:
-        "easy to customize everything, easy to learn, worth the money",
-    },
-    {
-      author: "AbstractAdz",
-      title: "For any Devs who wants to make a FPS game... BUY IT!",
-      description:
-        "Lemme tell you, it has everything, movement, customisable weapons, etc, everything you need for your FPS game! Plus you can sell your game with this Asset the Creator told me so! Speaking of the Creator, My word... They are awesome!",
-    },
-    {
-      author: "Reyespaz2005",
-      title: "Really good, and really simple",
-      description:
-        "It's powerful, and very easy to use. Honestly I couldn't be happier with my purchase!",
-    },
-    {
-      author: "ShinigamiYato",
-      title: "BUY IT",
-      description:
-        "had this asset for about a year now and kinds forgot about it and just went back to developing smth with it and bro I forgot how nice this asset Is. clear development code is very easy to understand and very easy to build up on. ive tried a lot of a",
-    },
-    {
-      author: "Brusn",
-      title:
-        "Wow - what an asset! Very clear/clean setup, yet tons of features.",
-      description:
-        "Grabbed it in the sale. Played with it for a day, have already got a prototype game running. Very clean setup and examples, things are easy to find, yet *many* features in there.  You've done a great job making this one, I can see why you're getting accolades for it. Easily worth it at full price.",
-    },
-    {
-      author: "Artifexwastaken",
-      title: "This asset is hella juicy",
-      description:
-        "The Discord server has some nice guys and the support is fantastic and fast, It is really good to get started with game dev if you don't come from a software background. You have no requirement to write a single line of code unless you want to.  Completly Deserving of The Best Developer Tool award this year.",
-    },
-    {
-      author: "Prundev",
-      title: "Best current FPS solution",
-      description:
-        "Was looking for an implementation of an FPS solution and after considering different options both paid and free, I discovered this asset while voting for the Unity awards where this asset also won Unity Best Development Tool 2023 award!",
-    },
-    {
-      author: "JeppiLee",
-      title: "Super strong FPS asset. Amazing support!",
-      description:
-        "Great documentation. Great access to community and incredible support.",
-    },
-    {
-      author: "Johnisawesome96",
-      title: "This is amazing!",
-      description:
-        "It can be a little intimidating, as with anything. But this asset has incredible support and is a powerful tool.  ",
-    },
-    {
-      author: "Hrohibil",
-      title: "Best FPS asset",
-      description:
-        "Search no more friends - If you really want to make that dream FPS game. Here is your chance. ",
-    },
-    {
-      author: "PapaSherbs",
-      title: "Incredibly well fleshed out",
-      description:
-        "Well fleshed out with consistent updates. Easy to understand and implement. Great FPS controller",
-    },
-    {
-      author: "StunkGames",
-      title: "The best asset with the best and helpful discord",
-      description: "Amazing ",
-    },
-  ];
+  
   const starStyle = {
     color: "orange",
     marginRight: "5px",
@@ -275,7 +178,7 @@ export default function IndexPage() {
                 </motion.span>
                 &nbsp;Winning
                 <br />
-                Game Development Assets
+                Unity Development Assets
               </motion.h1>
               <motion.h2
                 className={subtitle({ class: "mt-4" })}
@@ -323,20 +226,20 @@ export default function IndexPage() {
                 removeWrapper
                 alt="Card background"
                 className="z-0 w-full h-full object-cover"
-                src="fps-engine.png"
+                src="fps-engine.webp"
               />
               <Image
                 removeWrapper
                 alt="Card background"
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
-                src="FPS_Engine_Logo_White.png"
+                src="FPS_Engine_Logo_White.webp"
                 width="80%"
               />
               <Image
                 removeWrapper
                 alt="Top right corner image"
                 className="absolute top-0 right-0 m-5 z-20 pointer-events-none"
-                src="Best Development Tool Nomination on dark background (1).png"
+                src="Best-Development-Tool-Nomination-on-dark-background-_1_.webp"
                 style={{ width: "15%", borderRadius: "0" }}
               />
             </Card>
@@ -363,13 +266,13 @@ export default function IndexPage() {
                 removeWrapper
                 alt="Card background"
                 className="z-0 w-full h-full object-cover"
-                src="2d-engine.png"
+                src="2d-engine.webp"
               />
               <Image
                 removeWrapper
                 alt="Card background"
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
-                src="PlatformerEngine.png"
+                src="PlatformerEngine.webp"
                 width="80%"
               />
             </Card>
@@ -394,13 +297,13 @@ export default function IndexPage() {
                 removeWrapper
                 alt="Card background"
                 className="z-0 w-full h-full object-cover"
-                src="BulletHellEngine.png"
+                src="BulletHellEngine.webp"
               />
               <Image
                 removeWrapper
                 alt="Card background"
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
-                src="BulletHellEngineLogo.png"
+                src="BulletHellEngineLogo.webp"
                 width="80%"
               />
             </Card>
