@@ -16,7 +16,7 @@ export const siteConfig = {
     platformerengine: "https://assetstore.unity.com/packages/templates/systems/2d-platformer-engine-266973",
     bullethellengine: "https://assetstore.unity.com/packages/tools/game-toolkits/bullet-hell-engine-249720",
     cowsinai: "https://comradelmoz.gumroad.com/l/cowsinsai",
-    youtube: "https://www.youtube.com/channel/UCqA2o85jjV-q7jgMcF0CsrQ",
+    youtube: "https://rumble.com/user/CowsinsGames/videos",
     cowsinsaitutorial: "https://www.youtube.com/playlist?list=PLFDlsE9sYjL-fpnT6RTmMoYVrf1GuZGFT"
   },
 };
