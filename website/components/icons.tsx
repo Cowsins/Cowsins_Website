@@ -1,7 +1,7 @@
 import * as React from "react";
+import { Image } from "@nextui-org/image";
 
 import { IconSvgProps } from "@/types";
-import { Image } from "@nextui-org/image";
 export const Logo: React.FC<IconSvgProps> = ({
   size = 36,
   height,
@@ -9,10 +9,10 @@ export const Logo: React.FC<IconSvgProps> = ({
 }) => (
   <Image
     isBlurred
-    radius="none"
-    width={30}
     alt="NextUI hero Image"
+    radius="none"
     src="Cowsins_Logo_White_4k.webp"
+    width={30}
   />
 );
 

@@ -43,9 +43,11 @@ const GamesCarousel = () => {
   const animate = () => {
     setX((prev) => {
       const next = prev - speed;
+
       if (next <= -(cards.length * 200)) {
         return 0;
       }
+
       return next;
     });
     requestRef.current = requestAnimationFrame(animate);
@@ -53,6 +55,7 @@ const GamesCarousel = () => {
 
   useEffect(() => {
     requestRef.current = requestAnimationFrame(animate);
+
     return () => cancelAnimationFrame(requestRef.current!);
   }, [isHovered]);
 
@@ -70,14 +73,15 @@ const GamesCarousel = () => {
       <motion.div className="flex gap-4 absolute" style={{ x }}>
         {cards.concat(cards).map((card, index) => {
           const isCardHovered = hoveredIndex === index;
+
           return (
             <a
               key={index}
-              href={card.link}
-              target="_blank"
-              rel="noopener noreferrer"
               className="relative min-w-[480px] h-[310px] rounded-xl overflow-hidden text-white text-xl bg-cover bg-center flex items-center justify-center transition-transform duration-300"
+              href={card.link}
+              rel="noopener noreferrer"
               style={{ backgroundImage: `url(${card.background})` }}
+              target="_blank"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >

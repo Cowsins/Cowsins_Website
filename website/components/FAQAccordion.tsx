@@ -1,6 +1,8 @@
 import { Accordion, AccordionItem, Button } from "@nextui-org/react";
-import { DiscordIcon } from "./icons";
+
 import { siteConfig } from "@/config/site";
+
+import { DiscordIcon } from "./icons";
 
 const FAQAccordion = () => {
   return (
@@ -11,7 +13,7 @@ const FAQAccordion = () => {
         title="Where can I get support if I need help?"
       >
         At Cowsins, we want to offer the best experience for all members of our
-        community. If you ever need assistance or run into any issues, don't
+        community. If you ever need assistance or run into any issues, don&apos;t
         hesitate to contact us via Discord or email. Discord is the preferred
         method for quicker responses. If you reach out via email, please be sure
         to include your Order/Invoice ID for faster support.
@@ -40,9 +42,9 @@ const FAQAccordion = () => {
         aria-label="Credit FAQ"
         title="Do I need to credit Cowsins in my game?"
       >
-        Credit is not required, but it is always appreciated! If you’d like to
-        acknowledge Cowsins or the specific packages you’ve used in your game,
-        we’d be grateful for the mention.
+        Credit is not required, but it is always appreciated! If you&apos;d like to
+        acknowledge Cowsins or the specific packages you&apos;ve used in your game,
+        we&apos;d be grateful for the mention.
       </AccordionItem>
     </Accordion>
   );

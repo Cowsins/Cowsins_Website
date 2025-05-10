@@ -18,16 +18,16 @@ import {
   useDisclosure,
 } from "@nextui-org/modal";
 import NextLink from "next/link";
-import { siteConfig } from "@/config/site";
-import { TwitterIcon, DiscordIcon } from "@/components/icons";
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownSection,
   DropdownItem,
-  cn,
 } from "@nextui-org/react";
+
+import { siteConfig } from "@/config/site";
+import { TwitterIcon, DiscordIcon } from "@/components/icons";
 import { Logo } from "@/components/icons";
 
 export const Navbar = () => {
@@ -53,7 +53,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur">
+      <Modal backdrop="blur" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
@@ -89,7 +89,7 @@ export const Navbar = () => {
             >
               <Logo />
             </NextLink>
-            <div style={{ width: 20 }}></div>
+            <div style={{ width: 20 }} />
           </NavbarBrand>
           <div className="hidden md:flex justify-start">
             <Dropdown>
@@ -97,19 +97,19 @@ export const Navbar = () => {
                 <Button variant="light">Assets</Button>
               </DropdownTrigger>
               <DropdownMenu
-                variant="faded"
                 aria-label="Dropdown menu with description"
                 disabledKeys={["invpro"]}
+                variant="faded"
               >
-                <DropdownSection title="Unity" showDivider>
+                <DropdownSection showDivider title="Unity">
                   <DropdownItem
                     key="fpsengine"
                     description="15th Unity Awards Winner"
                   >
                     <Link
-                      color="foreground"
-                      showAnchorIcon
                       isExternal
+                      showAnchorIcon
+                      color="foreground"
                       href={siteConfig.links.fpsengine}
                     >
                       FPS Engine
@@ -120,9 +120,9 @@ export const Navbar = () => {
                     description="Latest release"
                   >
                     <Link
-                      color="foreground"
-                      showAnchorIcon
                       isExternal
+                      showAnchorIcon
+                      color="foreground"
                       href={siteConfig.links.platformerengine}
                     >
                       Platformer Engine
@@ -131,9 +131,9 @@ export const Navbar = () => {
 
                   <DropdownItem key="bullethellengine">
                     <Link
-                      color="foreground"
-                      showAnchorIcon
                       isExternal
+                      showAnchorIcon
+                      color="foreground"
                       href={siteConfig.links.bullethellengine}
                     >
                       Bullet Hell Engine
@@ -144,9 +144,9 @@ export const Navbar = () => {
                     description="Latest Release"
                   >
                     <Link
-                      color="foreground"
-                      showAnchorIcon
                       isExternal
+                      showAnchorIcon
+                      color="foreground"
                       href={siteConfig.links.bullethellengine}
                     >
                       Inventory Pro Add-On
@@ -154,9 +154,9 @@ export const Navbar = () => {
                   </DropdownItem>
                   <DropdownItem key="saveload" description="Latest release">
                     <Link
-                      color="foreground"
-                      showAnchorIcon
                       isExternal
+                      showAnchorIcon
+                      color="foreground"
                       href={siteConfig.links.platformerengine}
                     >
                       Save & Load Add-On
@@ -173,9 +173,9 @@ export const Navbar = () => {
                 <DropdownSection title="Community">
                   <DropdownItem key="ai" description="Created by Comrad Elmo">
                     <Link
-                      color="foreground"
-                      showAnchorIcon
                       isExternal
+                      showAnchorIcon
+                      color="foreground"
                       href={siteConfig.links.cowsinai}
                     >
                       Cowsins AI
@@ -185,22 +185,22 @@ export const Navbar = () => {
               </DropdownMenu>
             </Dropdown>
 
-            <div style={{ width: 15 }}></div>
+            <div style={{ width: 15 }} />
 
             <Dropdown>
               <DropdownTrigger>
                 <Button variant="light">Games</Button>
               </DropdownTrigger>
               <DropdownMenu
-                variant="faded"
                 aria-label="Dropdown menu with description"
                 disabledKeys={["invpro"]}
+                variant="faded"
               >
                 <DropdownSection title="Involved In">
                   <DropdownItem
                     key="lilith"
-                    onPress={openLilith}
                     description="In Development"
+                    onPress={openLilith}
                   >
                     Lilith´s Game
                   </DropdownItem>
@@ -208,18 +208,18 @@ export const Navbar = () => {
               </DropdownMenu>
             </Dropdown>
 
-            <div style={{ width: 15 }}></div>
+            <div style={{ width: 15 }} />
 
             <Dropdown>
               <DropdownTrigger>
                 <Button variant="light">Documentation</Button>
               </DropdownTrigger>
               <DropdownMenu
-                variant="faded"
                 aria-label="Dropdown menu with description"
                 disabledKeys={["invpro"]}
+                variant="faded"
               >
-                <DropdownSection title="Unity" showDivider>
+                <DropdownSection showDivider title="Unity">
                   <DropdownItem key="fpsengine" onPress={openFPSEngineDocs}>
                     FPS Engine
                   </DropdownItem>
@@ -254,23 +254,23 @@ export const Navbar = () => {
               </DropdownMenu>
             </Dropdown>
 
-            <div style={{ width: 15 }}></div>
+            <div style={{ width: 15 }} />
 
             <Dropdown>
               <DropdownTrigger>
                 <Button variant="light">Tutorials</Button>
               </DropdownTrigger>
               <DropdownMenu
-                variant="faded"
                 aria-label="Dropdown menu with description"
                 disabledKeys={["invpro"]}
+                variant="faded"
               >
-                <DropdownSection title="Unity" showDivider>
+                <DropdownSection showDivider title="Unity">
                   <DropdownItem key="tutorialschannel">
                     <Link
-                      color="foreground"
-                      showAnchorIcon
                       isExternal
+                      showAnchorIcon
+                      color="foreground"
                       href={siteConfig.links.youtube}
                     >
                       Tutorials Channel
@@ -280,9 +280,9 @@ export const Navbar = () => {
                 <DropdownSection title="Community">
                   <DropdownItem key="ai" description="Created by Comrad Elmo">
                     <Link
-                      color="foreground"
-                      showAnchorIcon
                       isExternal
+                      showAnchorIcon
+                      color="foreground"
                       href={siteConfig.links.cowsinsaitutorial}
                     >
                       Cowsins AI
@@ -292,25 +292,25 @@ export const Navbar = () => {
               </DropdownMenu>
             </Dropdown>
 
-            <div style={{ width: 15 }}></div>
+            <div style={{ width: 15 }} />
 
             <Dropdown>
               <DropdownTrigger>
                 <Button variant="light">Support</Button>
               </DropdownTrigger>
               <DropdownMenu
-                variant="faded"
                 aria-label="Dropdown menu with description"
                 disabledKeys={["invpro"]}
+                variant="faded"
               >
                 <DropdownItem
                   key="fpsengine"
                   description="Recommended for Better Assistance"
                 >
                   <Link
-                    color="foreground"
-                    showAnchorIcon
                     isExternal
+                    showAnchorIcon
+                    color="foreground"
                     href={siteConfig.links.discord}
                   >
                     Discord
@@ -322,9 +322,9 @@ export const Navbar = () => {
                   href="mailto:cowsinsgames@gmail.com"
                 >
                   <Link
-                    color="foreground"
-                    showAnchorIcon
                     isExternal
+                    showAnchorIcon
+                    color="foreground"
                     href="mailto:cowsinsgames@gmail.com"
                   >
                     Email
@@ -349,7 +349,7 @@ export const Navbar = () => {
           </NavbarItem>
 
           <NavbarItem className="hidden md:flex">
-            <Tooltip showArrow={true} content="cowsinsgames@gmail.com">
+            <Tooltip content="cowsinsgames@gmail.com" showArrow={true}>
               <Button
                 isExternal
                 as={Link}
@@ -376,24 +376,24 @@ export const Navbar = () => {
         <NavbarMenu>
           <Dropdown>
             <DropdownTrigger>
-              <Button variant="light" size="lg">
+              <Button size="lg" variant="light">
                 Assets
               </Button>
             </DropdownTrigger>
             <DropdownMenu
-              variant="faded"
               aria-label="Dropdown menu with description"
               disabledKeys={["invpro"]}
+              variant="faded"
             >
-              <DropdownSection title="Unity" showDivider>
+              <DropdownSection showDivider title="Unity">
                 <DropdownItem
                   key="fpsengine"
                   description="15th Unity Awards Winner"
                 >
                   <Link
-                    color="foreground"
-                    showAnchorIcon
                     isExternal
+                    showAnchorIcon
+                    color="foreground"
                     href={siteConfig.links.fpsengine}
                   >
                     FPS Engine
@@ -404,9 +404,9 @@ export const Navbar = () => {
                   description="Latest release"
                 >
                   <Link
-                    color="foreground"
-                    showAnchorIcon
                     isExternal
+                    showAnchorIcon
+                    color="foreground"
                     href={siteConfig.links.platformerengine}
                   >
                     Platformer Engine
@@ -414,9 +414,9 @@ export const Navbar = () => {
                 </DropdownItem>
                 <DropdownItem key="bullethellengine">
                   <Link
-                    color="foreground"
-                    showAnchorIcon
                     isExternal
+                    showAnchorIcon
+                    color="foreground"
                     href={siteConfig.links.bullethellengine}
                   >
                     Bullet Hell Engine
@@ -424,9 +424,9 @@ export const Navbar = () => {
                 </DropdownItem>
                 <DropdownItem key="inventoryaddon">
                   <Link
-                    color="foreground"
-                    showAnchorIcon
                     isExternal
+                    showAnchorIcon
+                    color="foreground"
                     href={siteConfig.links.bullethellengine}
                   >
                     Inventory Pro Add-On
@@ -434,9 +434,9 @@ export const Navbar = () => {
                 </DropdownItem>
                 <DropdownItem key="saveloadaddon">
                   <Link
-                    color="foreground"
-                    showAnchorIcon
                     isExternal
+                    showAnchorIcon
+                    color="foreground"
                     href={siteConfig.links.bullethellengine}
                   >
                     Save & Load Add-On
@@ -449,9 +449,9 @@ export const Navbar = () => {
               <DropdownSection title="Community">
                 <DropdownItem key="ai" description="Created by Comrad Elmo">
                   <Link
-                    color="foreground"
-                    showAnchorIcon
                     isExternal
+                    showAnchorIcon
+                    color="foreground"
                     href={siteConfig.links.cowsinai}
                   >
                     Cowsins AI
@@ -460,20 +460,20 @@ export const Navbar = () => {
               </DropdownSection>
             </DropdownMenu>
           </Dropdown>
-          <div style={{ width: 15 }}></div>
+          <div style={{ width: 15 }} />
 
           <Dropdown>
             <DropdownTrigger>
-              <Button variant="light" size="lg">
+              <Button size="lg" variant="light">
                 Documentation
               </Button>
             </DropdownTrigger>
             <DropdownMenu
-              variant="faded"
               aria-label="Dropdown menu with description"
               disabledKeys={["invpro"]}
+              variant="faded"
             >
-              <DropdownSection title="Unity" showDivider>
+              <DropdownSection showDivider title="Unity">
                 <DropdownItem key="fpsengine" onPress={openFPSEngineDocs}>
                   FPS Engine
                 </DropdownItem>
@@ -502,25 +502,25 @@ export const Navbar = () => {
             </DropdownMenu>
           </Dropdown>
 
-          <div style={{ width: 15 }}></div>
+          <div style={{ width: 15 }} />
 
           <Dropdown>
             <DropdownTrigger>
-              <Button variant="light" size="lg">
+              <Button size="lg" variant="light">
                 Tutorials
               </Button>
             </DropdownTrigger>
             <DropdownMenu
-              variant="faded"
               aria-label="Dropdown menu with description"
               disabledKeys={["invpro"]}
+              variant="faded"
             >
-              <DropdownSection title="Unity" showDivider>
+              <DropdownSection showDivider title="Unity">
                 <DropdownItem key="fpsengine">
                   <Link
-                    color="foreground"
-                    showAnchorIcon
                     isExternal
+                    showAnchorIcon
+                    color="foreground"
                     href={siteConfig.links.youtube}
                   >
                     Tutorials Channel
@@ -530,9 +530,9 @@ export const Navbar = () => {
               <DropdownSection title="Community">
                 <DropdownItem key="ai" description="Created by Comrad Elmo">
                   <Link
-                    color="foreground"
-                    showAnchorIcon
                     isExternal
+                    showAnchorIcon
+                    color="foreground"
                     href={siteConfig.links.cowsinsaitutorial}
                   >
                     Cowsins AI
@@ -542,27 +542,27 @@ export const Navbar = () => {
             </DropdownMenu>
           </Dropdown>
 
-          <div style={{ width: 15 }}></div>
+          <div style={{ width: 15 }} />
 
           <Dropdown>
             <DropdownTrigger>
-              <Button variant="light" size="lg">
+              <Button size="lg" variant="light">
                 Support
               </Button>
             </DropdownTrigger>
             <DropdownMenu
-              variant="faded"
               aria-label="Dropdown menu with description"
               disabledKeys={["invpro"]}
+              variant="faded"
             >
               <DropdownItem
                 key="fpsengine"
                 description="Recommended for Better Assistance"
               >
                 <Link
-                  color="foreground"
-                  showAnchorIcon
                   isExternal
+                  showAnchorIcon
+                  color="foreground"
                   href={siteConfig.links.discord}
                 >
                   Discord
@@ -574,9 +574,9 @@ export const Navbar = () => {
                 href="mailto:cowsinsgames@gmail.com"
               >
                 <Link
-                  color="foreground"
-                  showAnchorIcon
                   isExternal
+                  showAnchorIcon
+                  color="foreground"
                   href="mailto:cowsinsgames@gmail.com"
                 >
                   Email

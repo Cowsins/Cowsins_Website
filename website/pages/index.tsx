@@ -1,17 +1,18 @@
-import { title, subtitle } from "@/components/primitives";
-import styles from "../styles/custom.module.css";
-import DefaultLayout from "@/layouts/default";
 import { Tabs, Tab, Alert, useDisclosure } from "@nextui-org/react";
 import React from "react";
-import Footer from "../components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
+
+import DefaultLayout from "@/layouts/default";
+import { title, subtitle } from "@/components/primitives";
 import CardScroller from "@/components/CardScroller";
 import CowsinsAssets from "@/components/CowsinsAssets";
 import CommunityAssets from "@/components/CommunityAssets";
 import CowsinsAddons from "@/components/CowsinsAddons";
-import GamesCarousel from "@/components/GamesCarousel";
 import AssetDrawer from "@/components/AssetDrawer";
 import FAQAccordion from "@/components/FAQAccordion";
+
+import Footer from "../components/Footer";
+import styles from "../styles/custom.module.css";
 
 export default function IndexPage() {
   const [selected, setSelected] = React.useState("All");
@@ -43,39 +44,39 @@ export default function IndexPage() {
   return (
     <DefaultLayout>
       <AssetDrawer
+        assetKey={activeAssetKey}
         isOpen={isOpen}
         onClose={onClose}
-        assetKey={activeAssetKey}
       />
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <motion.div
+          animate={{ opacity: 1 }}
           className={styles.backgroundContainer}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <video className={styles.backgroundVideo} autoPlay muted loop>
+          <video autoPlay loop muted className={styles.backgroundVideo}>
             <source src="Website2.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className={styles.gradientOverlay}></div>
+          <div className={styles.gradientOverlay} />
           <div className={styles.content}>
             <motion.div
+              animate={{ y: 0 }}
               className="inline-block max-w-lg text-center justify-center mt-50"
               initial={{ y: 20 }}
-              animate={{ y: 0 }}
               transition={{ duration: 1 }}
             >
               <motion.h1
+                animate={{ scale: 1 }}
                 className={title()}
                 initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
                 transition={{ duration: 0.5 }}
               >
                 <motion.span
+                  animate={{ scale: 1 }}
                   className={title({ color: "violet" })}
                   initial={{ scale: 0.8 }}
-                  animate={{ scale: 1 }}
                   transition={{ duration: 0.5 }}
                 >
                   Award
@@ -85,9 +86,9 @@ export default function IndexPage() {
                 Unity Development Assets
               </motion.h1>
               <motion.h2
+                animate={{ opacity: 1 }}
                 className={subtitle({ class: "mt-4" })}
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
               >
                 Cowsins helps Unity game developers all over the world to create
@@ -100,11 +101,11 @@ export default function IndexPage() {
         <AnimatePresence mode="wait">
           <motion.h3
             key={selected}
-            className={title()}
-            style={{ marginTop: 25 }}
-            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            className={title()}
             exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 20 }}
+            style={{ marginTop: 25 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
             {getHeading()}
@@ -121,16 +122,16 @@ export default function IndexPage() {
           }}
         >
           <motion.div
-            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
             className="flex w-full flex-col max-w-[1000px]"
+            initial={{ opacity: 0 }}
             style={{
               marginTop: 25,
               marginBottom: 0,
               paddingBottom: 0,
               width: "100%",
             }}
+            transition={{ duration: 1, delay: 0.2 }}
           >
             <Tabs
               aria-label="Options"
@@ -140,16 +141,16 @@ export default function IndexPage() {
               <Tab key="All" title="All Assets">
                 <motion.div
                   key={selected}
-                  initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.1 }}
                   className="mx-auto grid grid-cols-8 gap-8"
+                  initial={{ opacity: 0 }}
                   style={{
                     marginTop: 25,
                     marginBottom: 0,
                     paddingBottom: 0,
                     width: "100%",
                   }}
+                  transition={{ duration: 1, delay: 0.1 }}
                 >
                   <CowsinsAssets onCardClick={handleCardClick} />
                   <CommunityAssets onCardClick={handleCardClick} />
@@ -159,16 +160,16 @@ export default function IndexPage() {
               <Tab key="Cowsins_Assets" title="Cowsins Assets">
                 <motion.div
                   key={selected}
-                  initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.1 }}
                   className="mx-auto grid grid-cols-8 gap-8"
+                  initial={{ opacity: 0 }}
                   style={{
                     marginTop: 25,
                     marginBottom: 0,
                     paddingBottom: 0,
                     width: "100%",
                   }}
+                  transition={{ duration: 1, delay: 0.1 }}
                 >
                   <CowsinsAssets onCardClick={handleCardClick} />
                 </motion.div>
@@ -181,16 +182,16 @@ export default function IndexPage() {
                 />
                 <motion.div
                   key={selected}
-                  initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.1 }}
                   className="mx-auto grid grid-cols-8 gap-8"
+                  initial={{ opacity: 0 }}
                   style={{
                     marginTop: 25,
                     marginBottom: 0,
                     paddingBottom: 0,
                     width: "100%",
                   }}
+                  transition={{ duration: 1, delay: 0.1 }}
                 >
                   <CowsinsAddons onCardClick={handleCardClick} />
                 </motion.div>
@@ -202,16 +203,16 @@ export default function IndexPage() {
                 />
                 <motion.div
                   key={selected}
-                  initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.1 }}
                   className="mx-auto grid grid-cols-8 gap-8"
+                  initial={{ opacity: 0 }}
                   style={{
                     marginTop: 25,
                     marginBottom: 0,
                     paddingBottom: 0,
                     width: "100%",
                   }}
+                  transition={{ duration: 1, delay: 0.1 }}
                 >
                   <CommunityAssets onCardClick={handleCardClick} />
                 </motion.div>
@@ -233,10 +234,10 @@ export default function IndexPage() {
 */}
 
         <motion.h3
-          className={title()}
-          style={{ marginTop: 50, marginBottom: 50 }}
-          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          className={title()}
+          initial={{ opacity: 0, y: 20 }}
+          style={{ marginTop: 50, marginBottom: 50 }}
           transition={{ delay: 1 }}
         >
           Frequently Asked Questions
@@ -245,10 +246,10 @@ export default function IndexPage() {
         <FAQAccordion />
 
         <motion.h3
-          className={title()}
-          style={{ marginTop: 50, marginBottom: 50 }}
-          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          className={title()}
+          initial={{ opacity: 0, y: 20 }}
+          style={{ marginTop: 50, marginBottom: 50 }}
           transition={{ delay: 1 }}
         >
           Explore Customer Testimonials

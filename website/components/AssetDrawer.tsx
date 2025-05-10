@@ -1,5 +1,4 @@
 import React from "react";
-import assetContent from "../utils/assetsData.json";
 import {
   Drawer,
   DrawerContent,
@@ -13,6 +12,9 @@ import {
   Image, // Import Image component from NextUI
   ScrollShadow,
 } from "@nextui-org/react";
+
+import assetContent from "../utils/assetsData.json";
+
 import StarRating from "./StarRating";
 
 type AssetDrawerProps = {
@@ -38,7 +40,7 @@ const AssetDrawer: React.FC<AssetDrawerProps> = ({
     : undefined;
 
   return (
-    <Drawer backdrop="blur" isOpen={isOpen} onOpenChange={onClose} size="xl">
+    <Drawer backdrop="blur" isOpen={isOpen} size="xl" onOpenChange={onClose}>
       <DrawerContent>
         {(onCloseFn) => (
           <>
@@ -52,11 +54,11 @@ const AssetDrawer: React.FC<AssetDrawerProps> = ({
 
               {content?.thumbnail && (
                 <Image
-                  src={content.thumbnail}
                   alt="Asset Thumbnail"
-                  width="100%" // Set width to 100% for full container width
                   height="auto" // Auto height to maintain aspect ratio
                   objectFit="cover" // Ensures the image covers the space without distortion
+                  src={content.thumbnail}
+                  width="100%" // Set width to 100% for full container width
                 />
               )}
               <div
@@ -79,7 +81,7 @@ const AssetDrawer: React.FC<AssetDrawerProps> = ({
                     .filter((chip) => chip.trim() !== "")
                     .slice(0, 3)
                     .map((chip, index) => (
-                      <Chip key={index} color="default" size="sm" radius="sm">
+                      <Chip key={index} color="default" radius="sm" size="sm">
                         {chip}
                       </Chip>
                     ))}
@@ -101,7 +103,7 @@ const AssetDrawer: React.FC<AssetDrawerProps> = ({
               <Button color="default" variant="solid" onPress={onCloseFn}>
                 Close
               </Button>
-              <a href={content?.link} target="_blank" rel="noopener noreferrer">
+              <a href={content?.link} rel="noopener noreferrer" target="_blank">
                 <Button color="primary" variant="solid">
                   See more
                 </Button>

@@ -24,10 +24,10 @@ const AssetCard = ({
 }: AssetCardProps) => {
   return (
     <motion.div
-      onClick={onClick || (() => window.open(link, "_blank"))}
       className="col-span-12 sm:col-span-4 h-[300px] cursor-pointer"
-      whileHover={{ scale: 0.98 }}
       transition={{ duration: 0.2 }}
+      whileHover={{ scale: 0.98 }}
+      onClick={onClick || (() => window.open(link, "_blank"))}
     >
       <Card className="h-full w-full">
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">

@@ -1,6 +1,7 @@
 import { FaStar } from "react-icons/fa";
-import styles from "../styles/custom.module.css";
 import { Card } from "@nextui-org/react";
+
+import styles from "../styles/custom.module.css";
 import { cards } from "../utils/cardsData";
 
 const ReviewCard = ({ card }: { card: (typeof cards)[0] }) => {
@@ -30,7 +31,7 @@ const ReviewCard = ({ card }: { card: (typeof cards)[0] }) => {
         }}
       >
         <h4>{card.author}</h4>
-        <div style={{ width: 10 }}></div>
+        <div style={{ width: 10 }} />
         {stars}
       </div>
 
@@ -59,7 +60,7 @@ const ReviewCard = ({ card }: { card: (typeof cards)[0] }) => {
             "linear-gradient(to bottom, rgba(32, 28, 28, 0), rgba(32, 28, 28, 1))",
           pointerEvents: "none", // This ensures the gradient doesn't interfere with mouse events
         }}
-      ></div>
+       />
     </Card>
   );
 };
