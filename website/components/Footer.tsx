@@ -1,14 +1,4 @@
-import { FaStar } from "react-icons/fa";
-
 import { Logo } from "./icons";
-
-const StarRating = () => (
-  <>
-    {Array.from({ length: 5 }, (_, i) => (
-      <FaStar key={i} style={{ color: "orange", marginRight: "5px" }} />
-    ))}
-  </>
-);
 
 const Footer = () => {
   return (

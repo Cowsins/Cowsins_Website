@@ -72,8 +72,6 @@ const GamesCarousel = () => {
       <div className="pointer-events-none absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10" />
       <motion.div className="flex gap-4 absolute" style={{ x }}>
         {cards.concat(cards).map((card, index) => {
-          const isCardHovered = hoveredIndex === index;
-
           return (
             <a
               key={index}
