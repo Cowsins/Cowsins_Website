@@ -5,9 +5,9 @@
       "This package adds Enemy AI and customizable behavior options, ranging from patrolling enemies to advanced shooting mechanics. It's the perfect starting point for integrating robust Enemy AI into your FPS Engine projects!"
     ],
     "chips": ["Community", "Free", "FPS Engine Add-On"],
-    "thumbnail": [
+    "thumbnail": 
       "https://public-files.gumroad.com/kjjbk86jfi1iif5t05zmxpirsu5s"
-    ],
+    ,
     "link": "https://comradelmoz.gumroad.com/l/cowsinsai"
   },
 
@@ -34,9 +34,9 @@
       "- Blank Scene to test the Integration"
     ],
     "chips": ["Official Add-On", "Free", "FPS Engine Add-On"],
-    "thumbnail": [
+    "thumbnail": 
       "https://public-files.gumroad.com/mmo7eolp9nzj023uq29x0ke0xux4"
-    ],
+    ,
     "link": "https://5844526137786.gumroad.com/l/legs-iks-addon"
   },
 
@@ -105,9 +105,9 @@
       "Add Inventories & Exclusive Features in your games with FPS Engine like a pro! 🚀"
     ],
     "chips": ["Official Add-On", "FPS Engine Add-On"],
-    "thumbnail": [
+    "thumbnail": 
       "https://assetstorev1-prd-cdn.unity3d.com/package-screenshot/b54d3698-3217-46a3-ad06-f943bf27cf19.webp"
-    ],
+    ,
     "link": "https://assetstore.unity.com/preview/318131/1058883"
   },
 
@@ -169,9 +169,9 @@
       "Save & Load your games like a pro for FPS Engine, the Best Development tool available! 🚀"
     ],
     "chips": ["Official Add-On", "FPS Engine Add-On"],
-    "thumbnail": [
+    "thumbnail": 
       "https://assetstorev1-prd-cdn.unity3d.com/key-image/28a45c15-0850-4758-b693-b7de90471d76.webp"
-    ],
+    ,
     "link": "https://assetstore.unity.com/preview/316848/1058884"
   },
 
@@ -278,9 +278,9 @@
       "Create your dream FPS game faster and easier than ever with the best development tool available! 🚀"
     ],
     "chips": ["Best Seller", ""],
-    "thumbnail": [
+    "thumbnail": 
       "https://assetstorev1-prd-cdn.unity3d.com/key-image/1170faf2-6566-4d2c-a7be-74cbaa58976d.webp"
-    ],
+    ,
     "link": "https://assetstore.unity.com/packages/templates/systems/fps-engine-218594"
   },
 
@@ -386,9 +386,9 @@
       "Thanks to Dawnosaur! :D"
     ],
     "chips": ["2D/2.5D Platformer"],
-    "thumbnail": [
+    "thumbnail": 
       "https://assetstorev1-prd-cdn.unity3d.com/key-image/5481b389-68ed-4eb0-aa57-6a44e4268ebb.webp"
-    ],
+    ,
     "link": "https://assetstore.unity.com/packages/templates/systems/platformer-engine-2d-2-5d-266973#reviews"
   },
 
@@ -458,9 +458,9 @@
       "🔁 REGULAR UPDATES & SUPPORT"
     ],
     "chips": ["Bullet Hell Toolkit"],
-    "thumbnail": [
+    "thumbnail": 
       "https://assetstorev1-prd-cdn.unity3d.com/key-image/51c53b33-9d38-45bf-8dff-d859cbf3b5b5.webp"
-    ],
+    ,
     "link": "https://assetstore.unity.com/packages/tools/game-toolkits/bullet-hell-engine-249720"
   }
 }
