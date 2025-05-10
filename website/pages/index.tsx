@@ -1,148 +1,46 @@
 import { title, subtitle } from "@/components/primitives";
 import styles from "../styles/custom.module.css";
 import DefaultLayout from "@/layouts/default";
-import { Button, Card, CardHeader, Image, CardFooter } from "@nextui-org/react";
-import { FaStar } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import { Logo } from "@/components/icons";
-import { motion } from "framer-motion";
-import { siteConfig } from "@/config/site";
-import { cards } from "../utils/cardsData"; 
+import {Tabs, Tab, Alert, useDisclosure} from "@nextui-org/react";
+import React from "react";
+import Footer from "../components/Footer";
+import { motion, AnimatePresence } from "framer-motion";
+import CardScroller from "@/components/CardScroller";
+import CowsinsAssets from "@/components/CowsinsAssets";
+import CommunityAssets from "@/components/CommunityAssets";
+import CowsinsAddons from "@/components/CowsinsAddons";
+import GamesCarousel from "@/components/GamesCarousel";
+import AssetDrawer from "@/components/AssetDrawer";
+import FAQAccordion from "@/components/FAQAccordion";
 
-const CardScroller = () => {
-  
-  const starStyle = {
-    color: "orange",
-    marginRight: "5px",
+export default function IndexPage() {
+  const [selected, setSelected] = React.useState("All");
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [activeAssetKey, setActiveAssetKey] = React.useState<string | null>(null);
+
+  const getHeading = () => {
+    switch (selected) {
+      case "All":
+        return "Discover All Assets";
+      case "Cowsins_Assets":
+        return "Discover Cowsins Assets";
+      case "Cowsins_Add-Ons":
+        return "Discover Official Cowsins Add-Ons";
+      case "Community":
+        return "Discover Community Add-Ons";
+      default:
+        return "";
+    }
   };
 
-  const stars = Array.from({ length: 5 }, (v, i) => (
-    <FaStar key={i} style={starStyle} />
-  ));
-
-  return (
-    <div className={styles.scrollerContainer}>
-      <div className={styles.scroller}>
-        {/* Duplicate cards to create a looping effect */}
-        {cards.map((card, index) => (
-          <Card
-            key={index}
-            className={`${styles.scrollerCard} ${styles.customCard}`}
-            style={{
-              padding: "20px",
-              paddingTop: "20px",
-              position: "relative",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <h4>{card.author}</h4>
-              <div style={{ width: 10 }}></div>
-              {stars}
-            </div>
-
-            <div style={{ whiteSpace: "pre-wrap", marginTop: "10px" }}>
-              {card.title}
-            </div>
-            <div
-              style={{
-                whiteSpace: "pre-wrap",
-                marginTop: "10px",
-                opacity: "0.5",
-              }}
-            >
-              {card.description}
-            </div>
-
-            {/* Gradient overlay */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                width: "100%",
-                height: "50%",
-                backgroundImage:
-                  "linear-gradient(to bottom, rgba(32, 28, 28, 0), rgba(32, 28, 28, 1))",
-                pointerEvents: "none", // This ensures the gradient doesn't interfere with mouse events
-              }}
-            ></div>
-          </Card>
-        ))}
-        {/* Duplicate cards to create a looping effect */}
-        {cards.map((card, index) => (
-          <Card
-            key={index}
-            className={`${styles.scrollerCard} ${styles.customCard}`}
-            style={{
-              padding: "20px",
-              paddingTop: "20px",
-              position: "relative",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <h4>{card.author}</h4>
-              <div style={{ width: 10 }}></div>
-              {stars}
-            </div>
-
-            <div style={{ whiteSpace: "pre-wrap", marginTop: "10px" }}>
-              {card.title}
-            </div>
-            <div
-              style={{
-                whiteSpace: "pre-wrap",
-                marginTop: "10px",
-                opacity: "0.5",
-              }}
-            >
-              {card.description}
-            </div>
-
-            {/* Gradient overlay */}
-            <div
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: 0,
-                width: "100%",
-                height: "50%",
-                backgroundImage:
-                  "linear-gradient(to bottom, rgba(32, 28, 28, 0), rgba(32, 28, 28, 1))",
-                pointerEvents: "none", // This ensures the gradient doesn't interfere with mouse events
-              }}
-            ></div>
-          </Card>
-        ))}
-      </div>
-    </div>
-  );
-};
-export default function IndexPage() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+  const handleCardClick = (key: string) => {
+    setActiveAssetKey(key);
+    onOpen();
+  };
+  
   return (
     <DefaultLayout>
+      <AssetDrawer isOpen={isOpen} onClose={onClose} assetKey={activeAssetKey} />
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <motion.div
           className={styles.backgroundContainer}
@@ -193,175 +91,154 @@ export default function IndexPage() {
           </div>
         </motion.div>
 
+        <AnimatePresence mode="wait">
+          <motion.h3
+            key={selected}
+            className={title()}
+            style={{ marginTop: 25 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            {getHeading()}
+          </motion.h3>
+        </AnimatePresence>
+
+
+
+        <div className="flex w-full flex-col max-w-[1000px]" 
+          style={{
+            marginTop: 25,
+            marginBottom: 0,
+            paddingBottom: 0,
+            width: "100%",
+          }}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="flex w-full flex-col max-w-[1000px]"
+              style={{
+                marginTop: 25,
+                marginBottom: 0,
+                paddingBottom: 0,
+                width: "100%",
+              }}
+            >
+          <Tabs aria-label="Options" selectedKey={selected} onSelectionChange={setSelected}>
+
+            <Tab key="All" title="All Assets">
+            <motion.div
+                key={selected}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.1 }}
+                className="mx-auto grid grid-cols-8 gap-8"
+                style={{
+                  marginTop: 25,
+                  marginBottom: 0,
+                  paddingBottom: 0,
+                  width: "100%",
+                }}
+              >
+              <CowsinsAssets  onCardClick={handleCardClick}/>
+              <CommunityAssets  onCardClick={handleCardClick}/>
+              </motion.div>
+            </Tab>
+
+            <Tab key="Cowsins_Assets" title="Cowsins Assets">
+            <motion.div
+                key={selected}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.1 }}
+                className="mx-auto grid grid-cols-8 gap-8"
+                style={{
+                  marginTop: 25,
+                  marginBottom: 0,
+                  paddingBottom: 0,
+                  width: "100%",
+                }}
+              >
+            <CowsinsAssets onCardClick={handleCardClick}/>
+            </motion.div>
+            </Tab>
+
+            <Tab key="Cowsins_Add-Ons" title="Cowsins Add-Ons">
+            <Alert
+                  color="primary"
+                  title={`Official Add-Ons for Cowsins Packages`}
+                />
+                <motion.div
+                key={selected}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.1 }}
+                className="mx-auto grid grid-cols-8 gap-8"
+                style={{
+                  marginTop: 25,
+                  marginBottom: 0,
+                  paddingBottom: 0,
+                  width: "100%",
+                }}
+              >
+              <CowsinsAddons onCardClick={handleCardClick}/>
+              </motion.div>
+            </Tab>
+            <Tab key="Community" title="Community">
+              <Alert
+                  color="primary"
+                  title={`Add-Ons made by members of the community for Cowsins Packages`}
+                  />
+             <motion.div
+                key={selected}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.1 }}
+                className="mx-auto grid grid-cols-8 gap-8"
+                style={{
+                  marginTop: 25,
+                  marginBottom: 0,
+                  paddingBottom: 0,
+                  width: "100%",
+                }}
+              >
+              <CommunityAssets onCardClick={handleCardClick}/>
+              </motion.div>
+            </Tab>
+          </Tabs>
+          </motion.div>
+        </div>
+{/*
         <motion.h3
           className={title()}
-          style={{ marginTop: 25 }}
+          style={{ marginTop: 50, marginBottom: 50 }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
         >
-          Discover the Assets
+          Games made with Cowsins Packages
         </motion.h3>
-        <div
-          className="max-w-[2000px] gap-1 grid grid-cols-12 grid-rows-2 px-6"
-          style={{ marginTop: 50, marginBottom: 0, paddingBottom: 0 }}
-        >
-          <motion.div
-            onClick={() => window.open(siteConfig.links.fpsengine, "_blank")}
-            className="col-span-12 sm:col-span-4 h-[300px] cursor-pointer"
-            whileHover={{ scale: 0.95 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Card className="h-full w-full">
-              <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-                <p className="text-tiny text-white/60 uppercase font-bold">
-                  Best Seller
-                </p>
-                <h4 className="text-white font-medium text-large">
-                  FPS Engine
-                </h4>
-              </CardHeader>
-              <Image
-                isZoomed
-                removeWrapper
-                alt="Card background"
-                className="z-0 w-full h-full object-cover"
-                src="fps-engine.webp"
-              />
-              <Image
-                removeWrapper
-                alt="Card background"
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
-                src="FPS_Engine_Logo_White.webp"
-                width="80%"
-              />
-              <Image
-                removeWrapper
-                alt="Top right corner image"
-                className="absolute top-0 right-0 m-5 z-20 pointer-events-none"
-                src="Best-Development-Tool-Nomination-on-dark-background-_1_.webp"
-                style={{ width: "15%", borderRadius: "0" }}
-              />
-            </Card>
-          </motion.div>
-          <motion.div
-            onClick={() =>
-              window.open(siteConfig.links.platformerengine, "_blank")
-            }
-            className="col-span-12 sm:col-span-4 h-[300px] cursor-pointer"
-            whileHover={{ scale: 0.95 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Card className="h-full w-full">
-              <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-                <p className="text-tiny text-white/60 uppercase font-bold">
-                  Latest Release
-                </p>
-                <h4 className="text-white font-medium text-large">
-                  Platformer Engine
-                </h4>
-              </CardHeader>
-              <Image
-                isZoomed
-                removeWrapper
-                alt="Card background"
-                className="z-0 w-full h-full object-cover"
-                src="2d-engine.webp"
-              />
-              <Image
-                removeWrapper
-                alt="Card background"
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
-                src="PlatformerEngine.webp"
-                width="80%"
-              />
-            </Card>
-          </motion.div>
-
-          <motion.div
-            onClick={() =>
-              window.open(siteConfig.links.bullethellengine, "_blank")
-            }
-            className="col-span-12 sm:col-span-4 h-[300px] cursor-pointer"
-            whileHover={{ scale: 0.95 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Card className="h-full w-full">
-              <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-                <h4 className="text-white font-medium text-large">
-                  Bullet Hell Engine
-                </h4>
-              </CardHeader>
-              <Image
-                isZoomed
-                removeWrapper
-                alt="Card background"
-                className="z-0 w-full h-full object-cover"
-                src="BulletHellEngine.webp"
-              />
-              <Image
-                removeWrapper
-                alt="Card background"
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
-                src="BulletHellEngineLogo.webp"
-                width="80%"
-              />
-            </Card>
-          </motion.div>
-        </div>
+        <GamesCarousel/>
+*/}   
+        
         <motion.h3
           className={title()}
-          style={{ marginTop: isMobile ? 25 : -250, textAlign: "center" }}
+          style={{ marginTop: 50, marginBottom: 50 }}
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 0.5, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
         >
-          Community Packages
+          Frequently Asked Questions
         </motion.h3>
 
-        <motion.div
-          onClick={() =>
-            window.open(siteConfig.links.cowsinai, "_blank")
-          }
-          className="max-w-[900px] gap-2 grid grid-rows-2 px-8 cursor-pointer"
-          style={{ marginTop: 25, textAlign: "center" }}
-          whileHover={{ scale: 0.95 }}
-          transition={{ duration: 0.4 }}
-        >
-          <Card
-            isFooterBlurred
-            className="w-full h-[250px] col-span-12 sm:col-span-7 relative overflow-hidden group cursor-pointer"
-          >
-            <CardHeader className="absolute z-10 top-1 flex-col items-start">
-              <p className="text-tiny text-white/60 uppercase font-bold">
-                FPS Engine Add-On
-              </p>
-              <h4 className="text-white/90 font-medium text-xl">Cowsins AI</h4>
-            </CardHeader>
-            <Image
-              removeWrapper
-              alt="Relaxing app background"
-              className="z-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              src="https://public-files.gumroad.com/kjjbk86jfi1iif5t05zmxpirsu5s"
-            />
-            <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
-              <div className="flex flex-grow gap-2 items-center">
-                <div className="flex flex-col">
-                  <p className="text-tiny text-white/60">
-                    Created by Comrad Elmo
-                  </p>
-                </div>
-              </div>
-              <Button radius="full" size="sm">
-                Get Add-On
-              </Button>
-            </CardFooter>
-          </Card>
-        </motion.div>
+        <FAQAccordion/>
 
+      
         <motion.h3
           className={title()}
-          style={{ marginTop: -200, textAlign: "center" }}
+          style={{ marginTop: 50, marginBottom: 50 }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
@@ -369,14 +246,9 @@ export default function IndexPage() {
           Explore Customer Testimonials
         </motion.h3>
 
-        <CardScroller />
-
-        <footer className="flex flex-col items-center justify-center py-4 text-gray-600 text-sm">
-          <Logo />
-          <p style={{ marginTop: 30 }}>
-            &copy; 2024 Cowsins. All rights reserved.
-          </p>
-        </footer>
+        <CardScroller/>
+        <Footer/>
+        
       </section>
     </DefaultLayout>
   );

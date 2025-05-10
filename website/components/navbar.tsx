@@ -20,20 +20,23 @@ import {Dropdown, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, 
 import { Logo } from "@/components/icons";
 
 export const Navbar = () => {
-  
-  
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
   const openCowsinsAIDocs = () =>
-    {
-      window.open('https://cowsins-ai.gitbook.io/cowsins-ai', '_blank');
-    }
+  {
+    window.open('https://cowsins-ai.gitbook.io/cowsins-ai', '_blank');
+  }
 
-    const openFPSEngineDocs = () =>
-      {
-        window.open('https://cowsinss-organization.gitbook.io/fps-engine-documentation', '_blank');
-      }
+  const openFPSEngineDocs = () =>
+  {
+    window.open('https://cowsinss-organization.gitbook.io/fps-engine-documentation', '_blank');
+  }
+
+  const openLilith = () =>
+  {
+    window.open('https://store.steampowered.com/app/3236340/Liliths_Game/', '_blank');
+  }
 
     
   return (
@@ -98,6 +101,7 @@ export const Navbar = () => {
                  </Link>
              
                 </DropdownItem>
+                
                 <DropdownItem
                   key="bullethellengine"
                 >
@@ -107,16 +111,28 @@ export const Navbar = () => {
                
                 </DropdownItem>  
                 <DropdownItem
-                  key="invpro"
-                  description="Coming Soon"
+                  key="inventoryproaddon"
+                  description = "Latest Release"
                 >
-                  Cowins Inspector
+                   <Link color="foreground" showAnchorIcon isExternal href={siteConfig.links.bullethellengine}>
+                   Inventory Pro Add-On
+                 </Link>
+                </DropdownItem>  
+                <DropdownItem
+                  key="saveload"
+                  description="Latest release"
+                >
+                   <Link  color="foreground" showAnchorIcon isExternal href={siteConfig.links.platformerengine}>
+                   Save & Load Add-On
+                 </Link>
+             
                 </DropdownItem>
                 <DropdownItem
-                  key="invpro"
-                  description="In development"
+                  key="inspector"
+                  description="Coming Soon"
+                  style={{opacity: 0.5}}
                 >
-                  Cowins Inventory Pro
+                  Cowins Inspector
                 </DropdownItem>
               </DropdownSection>
               <DropdownSection title="Community">  
@@ -132,6 +148,30 @@ export const Navbar = () => {
               </DropdownSection>
             </DropdownMenu>
           </Dropdown>
+
+          <div style={{width: 15}}></div>
+          
+          <Dropdown>
+            <DropdownTrigger>
+              <Button 
+                variant="light" 
+              >
+                Games
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu variant="faded" aria-label="Dropdown menu with description" disabledKeys={["invpro"]} >
+            <DropdownSection title="Involved In">  
+                <DropdownItem
+                  key="lilith"
+                  onPress={openLilith} 
+                  description="In Development" 
+                >
+                  Lilith´s Game
+                </DropdownItem>
+              </DropdownSection>
+            </DropdownMenu>
+          </Dropdown>
+
           <div style={{width: 15}}></div>
           
           <Dropdown>
@@ -161,6 +201,18 @@ export const Navbar = () => {
                 >
                   Bullet Hell Engine
                 </DropdownItem>
+                <DropdownItem
+                  key="inventoryProAddOn" 
+                  onPress={openFPSEngineDocs}     
+                >
+                  Inventory Pro Add-On
+                </DropdownItem>
+                <DropdownItem
+                  key="saveloadadadon"
+                  onPress={openFPSEngineDocs}     
+                >
+                  Save & Load Add-On
+                </DropdownItem>
               </DropdownSection>
               <DropdownSection title="Community">  
               <DropdownItem
@@ -187,28 +239,12 @@ export const Navbar = () => {
             <DropdownMenu variant="faded" aria-label="Dropdown menu with description" disabledKeys={["invpro"]} >
             <DropdownSection title="Unity" showDivider>  
               <DropdownItem
-                  key="fpsengine"
+                  key="tutorialschannel"
                 >
                    <Link color="foreground" showAnchorIcon isExternal href={siteConfig.links.youtube}>
-                   FPS Engine
+                   Tutorials Channel
                  </Link>
                
-                </DropdownItem>
-                <DropdownItem
-                  key="platformerengine"
-                >
-                    <Link color="foreground" showAnchorIcon isExternal href={siteConfig.links.youtube}>
-                    Platformer Engine
-                 </Link>
-             
-                </DropdownItem>
-                <DropdownItem
-                  key="bullethellengine"
-                >
-                    <Link color="foreground" showAnchorIcon isExternal href={siteConfig.links.youtube}>
-                    Bullet Hell Engine
-                 </Link>
-                
                 </DropdownItem>
               </DropdownSection>
               <DropdownSection title="Community">  
@@ -347,16 +383,26 @@ export const Navbar = () => {
                
                 </DropdownItem>
                 <DropdownItem
+                  key="inventoryaddon"
+                >
+                   <Link color="foreground" showAnchorIcon isExternal href={siteConfig.links.bullethellengine}>
+                   Inventory Pro Add-On
+                 </Link>
+               
+                </DropdownItem>
+                <DropdownItem
+                  key="saveloadaddon"
+                >
+                   <Link color="foreground" showAnchorIcon isExternal href={siteConfig.links.bullethellengine}>
+                   Save & Load Add-On
+                 </Link>
+               
+                </DropdownItem>
+                <DropdownItem
                   key="invpro"
                   description="Coming Soon"
                 >
                   Cowsins Inspector
-                </DropdownItem>
-                <DropdownItem
-                  key="invpro"
-                  description="In development"
-                >
-                  Cowins Inventory Pro
                 </DropdownItem>
               </DropdownSection>
               <DropdownSection title="Community">  
@@ -401,6 +447,18 @@ export const Navbar = () => {
                 >
                   Bullet Hell Engine
                 </DropdownItem>
+                <DropdownItem
+                  key="fpsengine"    
+                  onPress={openFPSEngineDocs}     
+                >
+                  Inventory Pro Add-On
+                </DropdownItem>
+                <DropdownItem
+                  key="fpsengine"    
+                  onPress={openFPSEngineDocs}     
+                >
+                  Save & Load Add-On
+                </DropdownItem>
               </DropdownSection>
               <DropdownSection title="Community">  
               <DropdownItem
@@ -430,25 +488,9 @@ export const Navbar = () => {
                   key="fpsengine"
                 >
                    <Link color="foreground" showAnchorIcon isExternal href={siteConfig.links.youtube}>
-                   FPS Engine
+                   Tutorials Channel
                  </Link>
                
-                </DropdownItem>
-                <DropdownItem
-                  key="platformerengine"
-                >
-                    <Link color="foreground" showAnchorIcon isExternal href={siteConfig.links.youtube}>
-                    Platformer Engine
-                 </Link>
-             
-                </DropdownItem>
-                <DropdownItem
-                  key="bullethellengine"
-                >
-                    <Link color="foreground" showAnchorIcon isExternal href={siteConfig.links.youtube}>
-                    Bullet Hell Engine
-                 </Link>
-                
                 </DropdownItem>
               </DropdownSection>
               <DropdownSection title="Community">  
