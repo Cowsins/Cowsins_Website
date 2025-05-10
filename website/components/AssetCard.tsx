@@ -9,6 +9,7 @@ type AssetCardProps = {
   imageSrc3: string;
   link: string;
   isFree: boolean;
+  onClick?: () => void;
 };
 
 const AssetCard = ({
