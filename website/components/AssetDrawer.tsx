@@ -42,7 +42,7 @@ const AssetDrawer: React.FC<AssetDrawerProps> = ({
     : undefined;
 
   return (
-    <Drawer backdrop="blur" isOpen={isOpen} size="xl" onOpenChange={onClose}>
+    <Drawer backdrop="blur" isOpen={isOpen} size="2xl" onOpenChange={onClose} hideCloseButton>
       <DrawerContent>
         {(onCloseFn) => (
           <>
