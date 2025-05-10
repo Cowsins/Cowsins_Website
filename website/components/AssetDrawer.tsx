@@ -9,7 +9,7 @@ import {
   Chip,
   Breadcrumbs,
   BreadcrumbItem,
-  Image, // Import Image component from NextUI
+  Image, 
   ScrollShadow,
 } from "@nextui-org/react";
 
@@ -27,7 +27,7 @@ type AssetData = {
   title: string;
   description: string[];
   chips?: string[];
-  thumbnail?: string; // Thumbnail field (can be URL or relative path)
+  thumbnail?: string; 
 };
 
 const AssetDrawer: React.FC<AssetDrawerProps> = ({
