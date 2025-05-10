@@ -32,7 +32,7 @@ const FAQAccordion = () => {
         title="Can I create and publish games using Cowsins Packages?"
       >
         Yes, absolutely! Cowsins Assets are designed to empower game developers
-        to create amazing games. You're free to use the assets in your projects
+        to create amazing games. You&apos;re free to use the assets in your projects
         and publish your games commercially on any platform of your choice.
         Please note that for licensing and copyright purposes, you should only
         distribute your games, not the individual assets.
