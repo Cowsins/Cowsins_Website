@@ -1,7 +1,7 @@
 import { title, subtitle } from "@/components/primitives";
 import styles from "../styles/custom.module.css";
 import DefaultLayout from "@/layouts/default";
-import {Tabs, Tab, Alert, useDisclosure} from "@nextui-org/react";
+import { Tabs, Tab, Alert, useDisclosure } from "@nextui-org/react";
 import React from "react";
 import Footer from "../components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,7 +16,9 @@ import FAQAccordion from "@/components/FAQAccordion";
 export default function IndexPage() {
   const [selected, setSelected] = React.useState("All");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [activeAssetKey, setActiveAssetKey] = React.useState<string | null>(null);
+  const [activeAssetKey, setActiveAssetKey] = React.useState<string | null>(
+    null,
+  );
 
   const getHeading = () => {
     switch (selected) {
@@ -37,10 +39,14 @@ export default function IndexPage() {
     setActiveAssetKey(key);
     onOpen();
   };
-  
+
   return (
     <DefaultLayout>
-      <AssetDrawer isOpen={isOpen} onClose={onClose} assetKey={activeAssetKey} />
+      <AssetDrawer
+        isOpen={isOpen}
+        onClose={onClose}
+        assetKey={activeAssetKey}
+      />
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <motion.div
           className={styles.backgroundContainer}
@@ -105,112 +111,115 @@ export default function IndexPage() {
           </motion.h3>
         </AnimatePresence>
 
-
-
-        <div className="flex w-full flex-col max-w-[1000px]" 
+        <div
+          className="flex w-full flex-col max-w-[1000px]"
           style={{
             marginTop: 25,
             marginBottom: 0,
             paddingBottom: 0,
             width: "100%",
-          }}>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="flex w-full flex-col max-w-[1000px]"
-              style={{
-                marginTop: 25,
-                marginBottom: 0,
-                paddingBottom: 0,
-                width: "100%",
-              }}
+          }}
+        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="flex w-full flex-col max-w-[1000px]"
+            style={{
+              marginTop: 25,
+              marginBottom: 0,
+              paddingBottom: 0,
+              width: "100%",
+            }}
+          >
+            <Tabs
+              aria-label="Options"
+              selectedKey={selected}
+              onSelectionChange={setSelected}
             >
-          <Tabs aria-label="Options" selectedKey={selected} onSelectionChange={setSelected}>
+              <Tab key="All" title="All Assets">
+                <motion.div
+                  key={selected}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.1 }}
+                  className="mx-auto grid grid-cols-8 gap-8"
+                  style={{
+                    marginTop: 25,
+                    marginBottom: 0,
+                    paddingBottom: 0,
+                    width: "100%",
+                  }}
+                >
+                  <CowsinsAssets onCardClick={handleCardClick} />
+                  <CommunityAssets onCardClick={handleCardClick} />
+                </motion.div>
+              </Tab>
 
-            <Tab key="All" title="All Assets">
-            <motion.div
-                key={selected}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.1 }}
-                className="mx-auto grid grid-cols-8 gap-8"
-                style={{
-                  marginTop: 25,
-                  marginBottom: 0,
-                  paddingBottom: 0,
-                  width: "100%",
-                }}
-              >
-              <CowsinsAssets  onCardClick={handleCardClick}/>
-              <CommunityAssets  onCardClick={handleCardClick}/>
-              </motion.div>
-            </Tab>
+              <Tab key="Cowsins_Assets" title="Cowsins Assets">
+                <motion.div
+                  key={selected}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.1 }}
+                  className="mx-auto grid grid-cols-8 gap-8"
+                  style={{
+                    marginTop: 25,
+                    marginBottom: 0,
+                    paddingBottom: 0,
+                    width: "100%",
+                  }}
+                >
+                  <CowsinsAssets onCardClick={handleCardClick} />
+                </motion.div>
+              </Tab>
 
-            <Tab key="Cowsins_Assets" title="Cowsins Assets">
-            <motion.div
-                key={selected}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.1 }}
-                className="mx-auto grid grid-cols-8 gap-8"
-                style={{
-                  marginTop: 25,
-                  marginBottom: 0,
-                  paddingBottom: 0,
-                  width: "100%",
-                }}
-              >
-            <CowsinsAssets onCardClick={handleCardClick}/>
-            </motion.div>
-            </Tab>
-
-            <Tab key="Cowsins_Add-Ons" title="Cowsins Add-Ons">
-            <Alert
+              <Tab key="Cowsins_Add-Ons" title="Cowsins Add-Ons">
+                <Alert
                   color="primary"
                   title={`Official Add-Ons for Cowsins Packages`}
                 />
                 <motion.div
-                key={selected}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.1 }}
-                className="mx-auto grid grid-cols-8 gap-8"
-                style={{
-                  marginTop: 25,
-                  marginBottom: 0,
-                  paddingBottom: 0,
-                  width: "100%",
-                }}
-              >
-              <CowsinsAddons onCardClick={handleCardClick}/>
-              </motion.div>
-            </Tab>
-            <Tab key="Community" title="Community">
-              <Alert
+                  key={selected}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.1 }}
+                  className="mx-auto grid grid-cols-8 gap-8"
+                  style={{
+                    marginTop: 25,
+                    marginBottom: 0,
+                    paddingBottom: 0,
+                    width: "100%",
+                  }}
+                >
+                  <CowsinsAddons onCardClick={handleCardClick} />
+                </motion.div>
+              </Tab>
+              <Tab key="Community" title="Community">
+                <Alert
                   color="primary"
                   title={`Add-Ons made by members of the community for Cowsins Packages`}
-                  />
-             <motion.div
-                key={selected}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.1 }}
-                className="mx-auto grid grid-cols-8 gap-8"
-                style={{
-                  marginTop: 25,
-                  marginBottom: 0,
-                  paddingBottom: 0,
-                  width: "100%",
-                }}
-              >
-              <CommunityAssets onCardClick={handleCardClick}/>
-              </motion.div>
-            </Tab>
-          </Tabs>
+                />
+                <motion.div
+                  key={selected}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.1 }}
+                  className="mx-auto grid grid-cols-8 gap-8"
+                  style={{
+                    marginTop: 25,
+                    marginBottom: 0,
+                    paddingBottom: 0,
+                    width: "100%",
+                  }}
+                >
+                  <CommunityAssets onCardClick={handleCardClick} />
+                </motion.div>
+              </Tab>
+            </Tabs>
           </motion.div>
         </div>
-{/*
+        {/*
         <motion.h3
           className={title()}
           style={{ marginTop: 50, marginBottom: 50 }}
@@ -221,8 +230,8 @@ export default function IndexPage() {
           Games made with Cowsins Packages
         </motion.h3>
         <GamesCarousel/>
-*/}   
-        
+*/}
+
         <motion.h3
           className={title()}
           style={{ marginTop: 50, marginBottom: 50 }}
@@ -233,9 +242,8 @@ export default function IndexPage() {
           Frequently Asked Questions
         </motion.h3>
 
-        <FAQAccordion/>
+        <FAQAccordion />
 
-      
         <motion.h3
           className={title()}
           style={{ marginTop: 50, marginBottom: 50 }}
@@ -246,9 +254,8 @@ export default function IndexPage() {
           Explore Customer Testimonials
         </motion.h3>
 
-        <CardScroller/>
-        <Footer/>
-        
+        <CardScroller />
+        <Footer />
       </section>
     </DefaultLayout>
   );

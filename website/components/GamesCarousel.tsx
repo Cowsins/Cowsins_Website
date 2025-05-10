@@ -5,28 +5,31 @@ const cards = [
   {
     title: "Voidside",
     author: "Spacecorn",
-    background: "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2246740/header.jpg?t=1745159629",
+    background:
+      "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2246740/header.jpg?t=1745159629",
     link: "https://store.steampowered.com/app/2246740/Voidside/",
   },
   {
     title: "High Fructose",
     author: "Chazak Games",
-    background: "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2506550/header.jpg?t=1744123320",
+    background:
+      "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2506550/header.jpg?t=1744123320",
     link: "https://store.steampowered.com/app/2506550/High_Fructose/",
   },
   {
     title: "Dreadfire",
     author: "Ryan Cho",
-    background: "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1872410/header.jpg?t=1743738313",
+    background:
+      "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1872410/header.jpg?t=1743738313",
     link: "https://store.steampowered.com/app/1872410/Dreadfire/",
   },
   {
     title: "Unannounced Title",
     author: "DrakonFox",
-    background: "https://media.discordapp.net/attachments/1040388933764251708/1293149645098455102/image.png?ex=681a8534&is=681933b4&hm=fd80afec85eea52fdf06e949441a1a63d4aac17282657c74439009e3a127127c&=&format=webp&quality=lossless",
+    background:
+      "https://media.discordapp.net/attachments/1040388933764251708/1293149645098455102/image.png?ex=681a8534&is=681933b4&hm=fd80afec85eea52fdf06e949441a1a63d4aac17282657c74439009e3a127127c&=&format=webp&quality=lossless",
     link: "https://store.steampowered.com/app/1872410/Dreadfire/",
   },
-  
 ];
 
 const GamesCarousel = () => {

@@ -20,7 +20,7 @@ const AssetCard = ({
   imageSrc3,
   link,
   isFree,
-  onClick
+  onClick,
 }: AssetCardProps) => {
   return (
     <motion.div
@@ -31,16 +31,19 @@ const AssetCard = ({
     >
       <Card className="h-full w-full">
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-        <CardHeader className="absolute z-10 top-1 flex-col !items-start">
-          {isFree && (
-            <Chip color="secondary" style={{marginBottom: "5px"}}>Free</Chip>
-          )}
-          <div className="bg-black/75 p-2 rounded-lg">
-            <p className="text-[10px] text-white/60 uppercase font-bold">{subtitle}</p>
-            <h4 className="text-[14px] text-white font-semibold">{title}</h4>
-          </div>
-        </CardHeader>
-
+          <CardHeader className="absolute z-10 top-1 flex-col !items-start">
+            {isFree && (
+              <Chip color="secondary" style={{ marginBottom: "5px" }}>
+                Free
+              </Chip>
+            )}
+            <div className="bg-black/75 p-2 rounded-lg">
+              <p className="text-[10px] text-white/60 uppercase font-bold">
+                {subtitle}
+              </p>
+              <h4 className="text-[14px] text-white font-semibold">{title}</h4>
+            </div>
+          </CardHeader>
         </CardHeader>
         <Image
           isZoomed
@@ -50,15 +53,15 @@ const AssetCard = ({
           src={imageSrc1}
         />
         {imageSrc2 && imageSrc2 !== "" && (
-        <Image
-          removeWrapper
-          alt="Card logo"
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
-          src={imageSrc2}
-          width="80%"
-        />
-      )}
-         {imageSrc3 && imageSrc3 !== "" && (
+          <Image
+            removeWrapper
+            alt="Card logo"
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none"
+            src={imageSrc2}
+            width="80%"
+          />
+        )}
+        {imageSrc3 && imageSrc3 !== "" && (
           <Image
             removeWrapper
             alt="Top right corner image"

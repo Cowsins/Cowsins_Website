@@ -1,19 +1,19 @@
 import * as React from "react";
 
 import { IconSvgProps } from "@/types";
-import {Image} from "@nextui-org/image";
+import { Image } from "@nextui-org/image";
 export const Logo: React.FC<IconSvgProps> = ({
   size = 36,
   height,
   ...props
 }) => (
   <Image
-  isBlurred
-  radius="none"
-      width={30}
-      alt="NextUI hero Image"
-      src="Cowsins_Logo_White_4k.webp"
-    />
+    isBlurred
+    radius="none"
+    width={30}
+    alt="NextUI hero Image"
+    src="Cowsins_Logo_White_4k.webp"
+  />
 );
 
 export const DiscordIcon: React.FC<IconSvgProps> = ({
@@ -57,4 +57,3 @@ export const TwitterIcon: React.FC<IconSvgProps> = ({
     </svg>
   );
 };
-

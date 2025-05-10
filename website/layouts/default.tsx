@@ -16,7 +16,6 @@ export default function DefaultLayout({
       <main className="container mx-auto max-w-7xl px-6 flex-grow pt-16">
         {children}
       </main>
-     
     </div>
   );
 }

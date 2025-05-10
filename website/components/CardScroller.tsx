@@ -10,7 +10,7 @@ const CardScroller = () => {
         {cards.map((card, index) => (
           <ReviewCard key={index} card={card} />
         ))}
-        
+
         {/* Duplicate cards to create a looping effect */}
         {cards.map((card, index) => (
           <ReviewCard key={index + cards.length} card={card} />

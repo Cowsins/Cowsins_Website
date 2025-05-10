@@ -3,7 +3,7 @@ import styles from "../styles/custom.module.css";
 import { Card } from "@nextui-org/react";
 import { cards } from "../utils/cardsData";
 
-const ReviewCard = ({ card }: { card: typeof cards[0] }) => {
+const ReviewCard = ({ card }: { card: (typeof cards)[0] }) => {
   const starStyle = {
     color: "orange",
     marginRight: "5px",
