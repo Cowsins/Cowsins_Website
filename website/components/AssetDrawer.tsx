@@ -57,10 +57,9 @@ const AssetDrawer: React.FC<AssetDrawerProps> = ({
               {content?.thumbnail && (
                 <Image
                   alt="Asset Thumbnail"
-                  height="auto" // Auto height to maintain aspect ratio
-                  objectFit="cover" // Ensures the image covers the space without distortion
+                  height="auto"
                   src={content.thumbnail}
-                  width="100%" // Set width to 100% for full container width
+                  width="100%"
                 />
               )}
               <div
