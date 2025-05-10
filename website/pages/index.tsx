@@ -136,7 +136,7 @@ export default function IndexPage() {
             <Tabs
               aria-label="Options"
               selectedKey={selected}
-              onSelectionChange={setSelected}
+              onSelectionChange={(key) => setSelected(key as string)}
             >
               <Tab key="All" title="All Assets">
                 <motion.div
