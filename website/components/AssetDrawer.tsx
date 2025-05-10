@@ -27,8 +27,10 @@ type AssetData = {
   title: string;
   description: string[];
   chips?: string[];
-  thumbnail?: string; 
+  thumbnail?: string[]; 
+  link?: string;
 };
+
 
 const AssetDrawer: React.FC<AssetDrawerProps> = ({
   isOpen,
