@@ -34,7 +34,7 @@ const CowsinsAddons = ({
         imageSrc2="legsLogo.webp"
         imageSrc3=""
         isFree={true}
-        link={siteConfig.links.legsaddon}
+        link={siteConfig.links.youtube}
         subtitle="FPS ENGINE ADD-ON"
         title="Legs + IKs Add-On"
         onClick={() => onCardClick("legs_iks_add_on")}
