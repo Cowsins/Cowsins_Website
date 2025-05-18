@@ -8,7 +8,7 @@ import {
   NavbarBrand,
   NavbarItem,
   Tooltip,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import {
   Modal,
   ModalContent,
@@ -16,7 +16,7 @@ import {
   ModalBody,
   ModalFooter,
   useDisclosure,
-} from "@nextui-org/modal";
+} from "@heroui/modal";
 import NextLink from "next/link";
 import {
   Dropdown,
@@ -24,13 +24,16 @@ import {
   DropdownMenu,
   DropdownSection,
   DropdownItem,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 import { siteConfig } from "@/config/site";
 import { TwitterIcon, DiscordIcon } from "@/components/icons";
 import { Logo } from "@/components/icons";
 
-export const Navbar = () => {
+type NavbarProps = {
+  onTutorialsClick: () => void;
+};
+export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const openCowsinsAIDocs = () => {
@@ -80,7 +83,7 @@ export const Navbar = () => {
           )}
         </ModalContent>
       </Modal>
-      <NextUINavbar maxWidth="xl" position="sticky">
+      <NextUINavbar maxWidth="xl" position="sticky"className="z-50">  
         <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
           <NavbarBrand className="gap-3 max-w-fit">
             <NextLink
@@ -266,15 +269,8 @@ export const Navbar = () => {
                 variant="faded"
               >
                 <DropdownSection showDivider title="Unity">
-                  <DropdownItem key="tutorialschannel">
-                    <Link
-                      isExternal
-                      showAnchorIcon
-                      color="foreground"
-                      href={siteConfig.links.youtube}
-                    >
-                      Tutorials Channel
-                    </Link>
+                  <DropdownItem key="tutorialschannel" onPress={onTutorialsClick}>
+                    Official Tutorials
                   </DropdownItem>
                 </DropdownSection>
                 <DropdownSection title="Community">
@@ -516,15 +512,8 @@ export const Navbar = () => {
               variant="faded"
             >
               <DropdownSection showDivider title="Unity">
-                <DropdownItem key="fpsengine">
-                  <Link
-                    isExternal
-                    showAnchorIcon
-                    color="foreground"
-                    href={siteConfig.links.youtube}
-                  >
-                    Tutorials Channel
-                  </Link>
+                <DropdownItem key="tutorialschannel" onPress={onTutorialsClick}>
+                  Official Tutorials
                 </DropdownItem>
               </DropdownSection>
               <DropdownSection title="Community">

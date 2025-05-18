@@ -1,4 +1,4 @@
-import { Tabs, Tab, Alert, useDisclosure } from "@nextui-org/react";
+import { Tabs, Tab, Alert, useDisclosure } from "@heroui/react";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 

@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useRouter } from "next/router";
 
@@ -11,11 +11,11 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
-    <NextUIProvider navigate={router.push}>
+    <HeroUIProvider navigate={router.push}>
       <NextThemesProvider defaultTheme="dark">
         <Component {...pageProps} />
       </NextThemesProvider>
-    </NextUIProvider>
+    </HeroUIProvider>
   );
 }
 

@@ -11,7 +11,7 @@ import {
   BreadcrumbItem,
   Image, 
   ScrollShadow,
-} from "@nextui-org/react";
+} from "@heroui/react";
 
 import assetContent from "../utils/assetsData.json";
 

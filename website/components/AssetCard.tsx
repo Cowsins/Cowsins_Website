@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Card, CardHeader, Chip, Image } from "@nextui-org/react";
+import { Card, CardHeader, Chip, Image } from "@heroui/react";
 
 type AssetCardProps = {
   subtitle: string;

@@ -1,5 +1,5 @@
 import { FaStar } from "react-icons/fa";
-import { Card } from "@nextui-org/react";
+import { Card } from "@heroui/react";
 
 import styles from "../styles/custom.module.css";
 import { cards } from "../utils/cardsData";
