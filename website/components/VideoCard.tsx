@@ -32,11 +32,12 @@ const VideoCard: React.FC<VideoCardProps> = ({ videoId, title, level }) => {
           className="overflow-hidden rounded-lg"
         >
           <Image
-            src={`https://vumbnail.com/${videoId}.jpg`}
-            alt={title}
-            radius="lg"
-            className="aspect-video w-full object-cover"
-          />
+  src={`https://vumbnail.com/${videoId}.jpg?cb=${Date.now()}`}
+  alt={title}
+  radius="lg"
+  className="aspect-video w-full object-cover"
+/>
+
         </motion.div>
         <div className="p-2">
           <h3 className="text-md font-semibold mb-2">{title}</h3>

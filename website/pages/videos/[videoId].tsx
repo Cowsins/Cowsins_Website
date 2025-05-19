@@ -10,7 +10,6 @@ import VideoCard from "@/components/VideoCard";
 import { siteConfig } from "@/config/site";
 import { DiscordIcon } from "@/components/icons";
 
-// Helper extract Vimeo ID from full URL
 const extractVimeoId = (url: string): string => {
   const match = url.match(/video\/(\d+)/);
   return match ? match[1] : "";
@@ -32,19 +31,15 @@ const getLevelColor = (level: string) => {
 const VideoPage: React.FC = () => {
   const router = useRouter();
 
-  // Wait for router query to be ready
   const rawVideoId = router.query.videoId as string | undefined;
   if (!rawVideoId) return <p>Loading...</p>;
 
-  // Normalize videoId from URL param or raw ID
   const videoId = extractVimeoId(`https://player.vimeo.com/video/${rawVideoId}`) || rawVideoId;
 
-  // Find the current video by matching Vimeo ID
   const currentVideo = videos.find((v) => extractVimeoId(v.url) === videoId);
 
   if (!currentVideo) return <p>Video not found.</p>;
 
-  // Filter related tutorials in the same category, excluding current video
   const relatedTutorials = videos.filter(
     (v) =>
       v.category === currentVideo.category &&
@@ -55,10 +50,8 @@ const VideoPage: React.FC = () => {
 
   useEffect(() => {
   if (playerRef.current) {
-    // Clear the current player HTML (important for re-init)
     playerRef.current.innerHTML = "";
 
-    // Create the iframe manually and append it to the ref
     const iframe = document.createElement("iframe");
     iframe.setAttribute("src", `https://player.vimeo.com/video/${videoId}?autoplay=1`);
     iframe.setAttribute("allowfullscreen", "true");
@@ -146,7 +139,7 @@ const VideoPage: React.FC = () => {
         {relatedTutorials.length ? (
           <>
             <h2 className="font-semibold text-lg mb-4">Related Tutorials</h2>
-            <div className="space-y-4">
+            <div className="space-y-4 max-h-[80vh] overflow-auto">
               {relatedTutorials.map((vid, i) => (
                 <VideoCard
                   key={i}
