@@ -83,21 +83,14 @@ const VideoPage: React.FC<VideoPageProps> = ({
   }, [videoId]);
 
   return (
-    <DefaultLayout>
-      <Head>
-        <title>{video.title}</title>
-        <meta property="og:title" content={video.title} />
-        <meta property="og:description" content={`Level: ${video.level}`} />
-        <meta
-          property="og:image"
-          content={`https://i.vimeocdn.com/video/${videoId}_640.jpg`}
-        />
-        <meta property="og:type" content="video.other" />
-        <meta
-          property="og:url"
-          content={`https://cowsins.com/videos/${videoId}`}
-        />
-      </Head>
+   <DefaultLayout
+    meta={{
+      title: video.title,
+      description: `Cowsins Tutorials`,
+      image: `https://vumbnail.com/${videoId}.jpg?cb=${Date.now()}`,
+      url: `https://cowsins.com/videos/${videoId}`,
+    }}
+  >
 
       <main className="max-w-[1100px] mx-auto pl-4 pr-4 grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-8">
         <section>
