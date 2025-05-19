@@ -1,14 +1,25 @@
-import React, { useEffect, useRef } from "react";
-import { useRouter } from "next/router";
+import React, { useRef, useEffect } from "react";
 import Head from "next/head";
+import { GetServerSideProps } from "next";
 import Plyr from "plyr";
 import "plyr/dist/plyr.css";
 import { videos, VideoItem } from "@/utils/videos";
 import DefaultLayout from "@/layouts/default";
-import { BreadcrumbItem, Breadcrumbs, Button, Card, CardBody, Chip } from "@heroui/react";
+import {
+  BreadcrumbItem,
+  Breadcrumbs,
+  Button,
+  Chip,
+} from "@heroui/react";
 import VideoCard from "@/components/VideoCard";
 import { siteConfig } from "@/config/site";
 import { DiscordIcon } from "@/components/icons";
+
+interface VideoPageProps {
+  video: VideoItem;
+  videoId: string;
+  relatedTutorials: VideoItem[];
+}
 
 const extractVimeoId = (url: string): string => {
   const match = url.match(/video\/(\d+)/);
@@ -28,30 +39,22 @@ const getLevelColor = (level: string) => {
   }
 };
 
-const VideoPage: React.FC = () => {
-  const router = useRouter();
-  const playerRef = useRef<HTMLDivElement>(null); // ✅ Moved above returns
-
-  const rawVideoId = router.query.videoId as string | undefined;
-  const videoId = rawVideoId
-    ? extractVimeoId(`https://player.vimeo.com/video/${rawVideoId}`) || rawVideoId
-    : "";
-
-  const currentVideo = videos.find((v) => extractVimeoId(v.url) === videoId);
-  const relatedTutorials = currentVideo
-    ? videos.filter(
-        (v) =>
-          v.category === currentVideo.category &&
-          extractVimeoId(v.url) !== videoId
-      )
-    : [];
+const VideoPage: React.FC<VideoPageProps> = ({
+  video,
+  videoId,
+  relatedTutorials,
+}) => {
+  const playerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (videoId && playerRef.current) {
       playerRef.current.innerHTML = "";
 
       const iframe = document.createElement("iframe");
-      iframe.setAttribute("src", `https://player.vimeo.com/video/${videoId}?autoplay=1`);
+      iframe.setAttribute(
+        "src",
+        `https://player.vimeo.com/video/${videoId}?autoplay=1`
+      );
       iframe.setAttribute("allowfullscreen", "true");
       iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture");
       iframe.className = "w-full h-full";
@@ -79,21 +82,21 @@ const VideoPage: React.FC = () => {
     }
   }, [videoId]);
 
-  if (!rawVideoId) return <p>Loading...</p>;
-  if (!currentVideo) return <p>Video not found.</p>;
-
   return (
     <DefaultLayout>
       <Head>
-        <title>{currentVideo.title}</title>
-        <meta property="og:title" content={currentVideo.title} />
-        <meta property="og:description" content={`Level: ${currentVideo.level}`} />
+        <title>{video.title}</title>
+        <meta property="og:title" content={video.title} />
+        <meta property="og:description" content={`Level: ${video.level}`} />
         <meta
           property="og:image"
           content={`https://i.vimeocdn.com/video/${videoId}_640.jpg`}
         />
         <meta property="og:type" content="video.other" />
-        <meta property="og:url" content={`https://yourdomain.com/videos/${videoId}`} />
+        <meta
+          property="og:url"
+          content={`https://cowsins.com/videos/${videoId}`}
+        />
       </Head>
 
       <main className="max-w-[1100px] mx-auto pl-4 pr-4 grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-8">
@@ -101,8 +104,8 @@ const VideoPage: React.FC = () => {
           <Breadcrumbs className="pb-3">
             <BreadcrumbItem href="/">Home</BreadcrumbItem>
             <BreadcrumbItem href="/">Tutorials</BreadcrumbItem>
-            <BreadcrumbItem href="/">{currentVideo.category}</BreadcrumbItem>
-            <BreadcrumbItem>{currentVideo.title}</BreadcrumbItem>
+            <BreadcrumbItem href="/">{video.category}</BreadcrumbItem>
+            <BreadcrumbItem>{video.title}</BreadcrumbItem>
           </Breadcrumbs>
 
           <div className="rounded-2xl overflow-hidden mb-6">
@@ -114,21 +117,21 @@ const VideoPage: React.FC = () => {
             />
           </div>
 
-          <h1 className="text-3xl font-bold mb-2">{currentVideo.title}</h1>
+          <h1 className="text-3xl font-bold mb-2">{video.title}</h1>
           <Chip
-            color={getLevelColor(currentVideo.level)}
+            color={getLevelColor(video.level)}
             size="sm"
             variant="flat"
             radius="sm"
           >
-            {currentVideo.level} Difficulty
+            {video.level} Difficulty
           </Chip>
 
           <div className="mt-4">
             <a href={siteConfig.links.discord}>
               <Button>
                 Do you need help? Join us on
-                <DiscordIcon className="text-default-500" />
+                <DiscordIcon className="text-default-500 ml-2" />
                 Discord
               </Button>
             </a>
@@ -151,7 +154,9 @@ const VideoPage: React.FC = () => {
               </div>
             </>
           ) : (
-            <p className="text-gray-500 italic">No related tutorials available.</p>
+            <p className="text-gray-500 italic">
+              No related tutorials available.
+            </p>
           )}
         </aside>
       </main>
@@ -159,5 +164,38 @@ const VideoPage: React.FC = () => {
   );
 };
 
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const videoId = context.params?.videoId as string;
+
+  const extractVimeoId = (url: string): string => {
+    const match = url.match(/video\/(\d+)/);
+    return match ? match[1] : "";
+  };
+
+  const currentVideo = videos.find(
+    (v) =>
+      extractVimeoId(v.url) === videoId || v.url.includes(videoId)
+  );
+
+  if (!currentVideo) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const relatedTutorials = videos.filter(
+    (v) =>
+      v.category === currentVideo.category &&
+      extractVimeoId(v.url) !== extractVimeoId(currentVideo.url)
+  );
+
+  return {
+    props: {
+      video: currentVideo,
+      videoId: extractVimeoId(currentVideo.url),
+      relatedTutorials,
+    },
+  };
+};
 
 export default VideoPage;
