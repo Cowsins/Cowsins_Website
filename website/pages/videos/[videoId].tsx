@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import Head from "next/head";
-import { GetServerSideProps } from "next";
 import Plyr from "plyr";
 import "plyr/dist/plyr.css";
 import { videos, VideoItem } from "@/utils/videos";
@@ -14,6 +13,7 @@ import {
 import VideoCard from "@/components/VideoCard";
 import { siteConfig } from "@/config/site";
 import { DiscordIcon } from "@/components/icons";
+import { GetStaticProps, GetStaticPaths } from "next";
 
 interface VideoPageProps {
   video: VideoItem;
@@ -164,13 +164,22 @@ const VideoPage: React.FC<VideoPageProps> = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const videoId = context.params?.videoId as string;
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = videos.map((video) => {
+    const videoId = extractVimeoId(video.url);
+    return {
+      params: { videoId },
+    };
+  });
 
-  const extractVimeoId = (url: string): string => {
-    const match = url.match(/video\/(\d+)/);
-    return match ? match[1] : "";
+  return {
+    paths,
+    fallback: false,
   };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const videoId = params?.videoId as string;
 
   const currentVideo = videos.find(
     (v) =>
