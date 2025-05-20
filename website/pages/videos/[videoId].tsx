@@ -83,16 +83,18 @@ const VideoPage: React.FC<VideoPageProps> = ({
   }, [videoId]);
 
   return (
-   <DefaultLayout
-    meta={{
-      title: video.title,
-      description: `Cowsins Tutorials`,
-      image: `https://vumbnail.com/${videoId}.jpg?cb=${Date.now()}`,
-      url: `https://cowsins.com/videos/${videoId}`,
-    }}
-  >
+  <DefaultLayout
+  meta={{
+    title: video.title,
+    description: `Cowsins Tutorials`,
+    image: `https://vumbnail.com/${videoId}.jpg?cb=${Date.now()}`,
+    url: `https://cowsins.com/videos/${videoId}`,
+  }}
+  maxWidth="100vw"
+>
 
-      <main className="max-w-[1100px] mx-auto pl-4 pr-4 grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-8">
+
+      <main className="mx-auto pl-4 pr-4 grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-8">
         <section>
           <Breadcrumbs className="pb-3">
             <BreadcrumbItem href="/">Home</BreadcrumbItem>

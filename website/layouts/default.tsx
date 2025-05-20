@@ -15,9 +15,11 @@ interface MetaProps {
 export default function DefaultLayout({
   children,
   meta,
+  maxWidth = " mx-auto  max-w-7xl", // default value
 }: {
   children: React.ReactNode;
   meta?: MetaProps;
+  maxWidth?: string;
 }) {
   const tutorialsModal = useDisclosure();
 
@@ -29,7 +31,7 @@ export default function DefaultLayout({
         isOpen={tutorialsModal.isOpen}
         onOpenChange={tutorialsModal.onOpenChange}
       />
-      <main className="container mx-auto max-w-7xl px-6 flex-grow pt-16">
+      <main className={`container${maxWidth} px-6 flex-grow pt-16`}>
         {children}
       </main>
     </div>
