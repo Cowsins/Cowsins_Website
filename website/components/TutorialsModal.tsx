@@ -36,27 +36,31 @@ const TutorialsModal: React.FC<TutorialsModalProps> = ({
 
   return (
     <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="5xl">
-      <ModalContent className="max-h-[75vh] overflow-hidden">
+     <ModalContent className="max-h-[75vh] overflow-hidden sm:rounded-lg sm:max-h-[75vh] h-screen sm:h-auto">
         <ModalHeader className="flex flex-col gap-1">
           Cowsins Official Tutorials
         </ModalHeader>
         <ModalBody className="p-0">
   <div className="sticky top-0 z-10 p-4">
-    <Tabs
-      selectedKey={selectedTab}
-      onSelectionChange={(key) => {
-        setSelectedTab(key as string);
-        setSearchQuery("");
-      }}
-      aria-label="Tutorial categories"
-    >
-      <Tab key="FPS Engine" title="FPS Engine" />
-      <Tab key="Inventory Pro Add-On" title="Inventory Pro Add-On" />
-      <Tab key="Save & Load Add-On" title="Save & Load Add-On" />
-      <Tab key="Platformer Engine" title="Platformer Engine" />
-      <Tab key="Bullet Hell Engine" title="Bullet Hell Engine" />
-      <Tab key="Legs + IKs Add-On" title="Legs + IKs Add-On" />
-    </Tabs>
+    <div className="overflow-x-auto no-scrollbar -mx-4 px-4">
+  <Tabs
+    selectedKey={selectedTab}
+    onSelectionChange={(key) => {
+      setSelectedTab(key as string);
+      setSearchQuery("");
+    }}
+    aria-label="Tutorial categories"
+    className="min-w-max"
+  >
+    <Tab key="FPS Engine" title="FPS Engine" />
+    <Tab key="Inventory Pro Add-On" title="Inventory Pro Add-On" />
+    <Tab key="Save & Load Add-On" title="Save & Load Add-On" />
+    <Tab key="Platformer Engine" title="Platformer Engine" />
+    <Tab key="Bullet Hell Engine" title="Bullet Hell Engine" />
+    <Tab key="Legs + IKs Add-On" title="Legs + IKs Add-On" />
+  </Tabs>
+</div>
+
 
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-start sm:gap-3 mt-4">
       <Input
