@@ -49,9 +49,15 @@ export const videos: VideoItem[] = [
     category: "FPS Engine",
     level: "Beginner",
   },
+    {
+    url: "https://player.vimeo.com/video/1094068445",
+    title: "How to add Attachments in FPS Engine >1.3.8",
+    category: "FPS Engine",
+    level: "Beginner",
+  },
   {
     url: "https://player.vimeo.com/video/1085954742",
-    title: "Working with Attachments in FPS Engine",
+    title: "Working with Attachments in FPS Engine [DEPRECATED <1.3.7]",
     category: "FPS Engine",
     level: "Beginner",
   },
