@@ -46,6 +46,25 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
       "_blank",
     );
   };
+  const openInventoryDocs = () => {
+    window.open(
+      "https://cowsinss-organization.gitbook.io/inventory-pro-add-on-documentation",
+      "_blank",
+    );
+  };
+  const openSaveLoadDocs = () => {
+    window.open(
+      "https://cowsinss-organization.gitbook.io/save-and-load-add-on/",
+      "_blank",
+    );
+  };
+
+   const openPlatformerEngineDocs = () => {
+    window.open(
+      "https://cowsinss-organization.gitbook.io/platformer-documentation/",
+      "_blank",
+    );
+  };
 
   const openLilith = () => {
     window.open(
@@ -226,7 +245,7 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                   <DropdownItem key="fpsengine" onPress={openFPSEngineDocs}>
                     FPS Engine
                   </DropdownItem>
-                  <DropdownItem key="platformerengine" onPress={onOpen}>
+                  <DropdownItem key="platformerengine" onPress={openPlatformerEngineDocs}>
                     Platformer Engine
                   </DropdownItem>
                   <DropdownItem key="bullethellengine" onPress={onOpen}>
@@ -234,13 +253,13 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                   </DropdownItem>
                   <DropdownItem
                     key="inventoryProAddOn"
-                    onPress={openFPSEngineDocs}
+                    onPress={openInventoryDocs}
                   >
                     Inventory Pro Add-On
                   </DropdownItem>
                   <DropdownItem
                     key="saveloadadadon"
-                    onPress={openFPSEngineDocs}
+                    onPress={openSaveLoadDocs}
                   >
                     Save & Load Add-On
                   </DropdownItem>
@@ -473,16 +492,16 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                 <DropdownItem key="fpsengine" onPress={openFPSEngineDocs}>
                   FPS Engine
                 </DropdownItem>
-                <DropdownItem key="platformerengine" onPress={onOpen}>
+                <DropdownItem key="platformerengine" onPress={openPlatformerEngineDocs}>
                   Platformer Engine
                 </DropdownItem>
                 <DropdownItem key="bullethellengine" onPress={onOpen}>
                   Bullet Hell Engine
                 </DropdownItem>
-                <DropdownItem key="fpsengine" onPress={openFPSEngineDocs}>
+                <DropdownItem key="fpsengine" onPress={openInventoryDocs}>
                   Inventory Pro Add-On
                 </DropdownItem>
-                <DropdownItem key="fpsengine" onPress={openFPSEngineDocs}>
+                <DropdownItem key="fpsengine" onPress={openSaveLoadDocs}>
                   Save & Load Add-On
                 </DropdownItem>
               </DropdownSection>
