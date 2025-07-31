@@ -191,7 +191,12 @@ export const videos: VideoItem[] = [
     category: "Platformer Engine",
     level: "Beginner",
   },
-
+  {
+    url: "https://player.vimeo.com/video/1106211679",
+    title: "Switching 3d Characters in Platformer Engine",
+    category: "Platformer Engine",
+    level: "Beginner",
+  },
   
   // BULLET HELL ENGINE
   {
