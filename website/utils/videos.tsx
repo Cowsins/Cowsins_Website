@@ -91,6 +91,12 @@ export const videos: VideoItem[] = [
     category: "FPS Engine",
     level: "Beginner",
   },
+  {
+    url: "https://player.vimeo.com/video/1129574976",
+    title: "How to add New Layers in FPS Engine ( Footsteps, Impact Effects, Bullet Holes )",
+    category: "FPS Engine",
+    level: "Beginner",
+  },
   // INVENTORY PRO ADD-ON
   {
     url: "https://player.vimeo.com/video/1085636055",
