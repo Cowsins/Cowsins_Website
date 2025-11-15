@@ -103,7 +103,7 @@ const VideoPage: React.FC = () => {
         <meta property="og:url" content={`https://yourdomain.com/videos/${videoId}`} />
       </Head>
 
-      <main className="max-w-[1100px] mx-auto pl-4 pr-4 grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-8">
+      <main className="max-w-[1100px] mx-auto pl-4 pr-4 grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-8 items-start h-full overflow-hidden">
 
       <section>
       <Breadcrumbs className="pb-3">
@@ -113,9 +113,9 @@ const VideoPage: React.FC = () => {
             <BreadcrumbItem>{currentVideo.title}</BreadcrumbItem>
       </Breadcrumbs>
 
-        <div className="rounded-2xl overflow-hidden mb-6">
+        <div className="rounded-2xl overflow-hidden mb-6 md:sticky md:top-16 md:max-h-[calc(100vh-4rem)] md:overflow-hidden">
           <div
-            className="aspect-video"
+            className="aspect-video h-full"
             ref={playerRef}
             data-plyr-provider="vimeo"
             data-plyr-embed-id={videoId}
@@ -142,7 +142,7 @@ const VideoPage: React.FC = () => {
       </section>
 
 
-      <aside>
+      <aside className="md:max-h-[calc(100vh-4rem)] md:overflow-y-auto md:pr-2">
         {relatedTutorials.length ? (
           <>
             <h2 className="font-semibold text-lg mb-4">Related Tutorials</h2>

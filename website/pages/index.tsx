@@ -67,6 +67,11 @@ export default function IndexPage() {
               initial={{ y: 20 }}
               transition={{ duration: 1 }}
             >
+              <img
+                src="/Best-Development-Tool-Nomination-on-dark-background-_1_.webp"
+                alt="Award nomination"
+                className="mx-auto mb-7 w-24 max-w-full h-auto"
+              />
               <motion.h1
                 animate={{ scale: 1 }}
                 className={title()}

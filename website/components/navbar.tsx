@@ -83,14 +83,13 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
           )}
         </ModalContent>
       </Modal>
-      <NextUINavbar maxWidth="xl" position="sticky"className="z-50">  
+      <NextUINavbar maxWidth="xl" position="sticky" className="z-50">
         <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
           <NavbarBrand className="gap-3 max-w-fit">
-            <NextLink
-              className="flex justify-start items-center gap-1"
-              href="/"
-            >
-              <Logo />
+            <NextLink className="flex justify-start items-center gap-1" href="/">
+              <div style={{ backgroundColor: "rgba(0,0,0,0.6)", padding: 4, borderRadius: 6 }}>
+                <Logo />
+              </div>
             </NextLink>
             <div style={{ width: 20 }} />
           </NavbarBrand>

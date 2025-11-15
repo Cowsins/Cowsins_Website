@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Force dark color scheme and provide a sensible fallback background
+	 for any elements that don't use Tailwind classes. */
+:root {
+	color-scheme: dark;
+}
+
+html, body, #__next {
+	background-color: #0b0b0b;
+}
