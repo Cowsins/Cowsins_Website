@@ -1,11 +1,4 @@
-export interface VideoItem {
-  url: string;
-  title: string;
-  category: string;
-  level: "Beginner" | "Intermediate" | "Advanced";
-}
-
-export const videos: VideoItem[] = [
+export const videos = [
   // FPS ENGINE
   {
     url: "https://player.vimeo.com/video/1085953150",

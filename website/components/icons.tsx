@@ -7,12 +7,13 @@ export const Logo: React.FC<IconSvgProps> = ({
   height,
   ...props
 }) => (
-  <Image
-    isBlurred
-    alt="NextUI hero Image"
-    radius="none"
-    src="Cowsins_Logo_White_4k.webp"
-    width={30}
+  <img
+    src="/Cowsins_Logo_White_4k.webp"
+    alt="Cowsins logo"
+    width={size}
+    height={height}
+    style={{ display: "block", width: size, height: height ?? "auto", opacity: 1 }}
+    {...props}
   />
 );
 
