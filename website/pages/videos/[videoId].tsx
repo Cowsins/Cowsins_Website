@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Plyr from "plyr";
 import "plyr/dist/plyr.css";
-import { videos, VideoItem } from "@/utils/videos";
+import { videos } from "@/utils/videos";
 import DefaultLayout from "@/layouts/default";
 import { BreadcrumbItem, Breadcrumbs, Button, Card, CardBody, Chip } from "@heroui/react";
 import VideoCard from "@/components/VideoCard";
@@ -32,29 +32,28 @@ const getLevelColor = (level: string) => {
 const VideoPage: React.FC = () => {
   const router = useRouter();
 
-  // Wait for router query to be ready
+  // Extract raw ID from router (may be undefined initially)
   const rawVideoId = router.query.videoId as string | undefined;
-  if (!rawVideoId) return <p>Loading...</p>;
 
-  // Normalize videoId from URL param or raw ID
-  const videoId = extractVimeoId(`https://player.vimeo.com/video/${rawVideoId}`) || rawVideoId;
+  // Normalize videoId from URL param or raw ID (may be undefined)
+  const videoId = rawVideoId
+    ? extractVimeoId(`https://player.vimeo.com/video/${rawVideoId}`) || rawVideoId
+    : undefined;
 
-  // Find the current video by matching Vimeo ID
-  const currentVideo = videos.find((v) => extractVimeoId(v.url) === videoId);
-
-  if (!currentVideo) return <p>Video not found.</p>;
+  // Find the current video by matching Vimeo ID (may be undefined)
+  const currentVideo = videoId ? videos.find((v) => extractVimeoId(v.url) === videoId) : undefined;
 
   // Filter related tutorials in the same category, excluding current video
-  const relatedTutorials = videos.filter(
-    (v) =>
-      v.category === currentVideo.category &&
-      extractVimeoId(v.url) !== videoId
-  );
+  const relatedTutorials = currentVideo
+    ? videos.filter((v) => v.category === currentVideo.category && extractVimeoId(v.url) !== videoId)
+    : [];
 
+  // Hooks must be called unconditionally — declare them before any early returns
   const playerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-  if (playerRef.current) {
+    if (!videoId || !playerRef.current) return;
+
     // Clear the current player HTML (important for re-init)
     playerRef.current.innerHTML = "";
 
@@ -64,7 +63,7 @@ const VideoPage: React.FC = () => {
     iframe.setAttribute("allowfullscreen", "true");
     iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture");
     iframe.className = "w-full h-full";
-    
+
     playerRef.current.appendChild(iframe);
 
     const player = new Plyr(iframe, {
@@ -85,9 +84,23 @@ const VideoPage: React.FC = () => {
     return () => {
       player.destroy();
     };
-  }
-}, [videoId]);
+  }, [videoId]);
 
+  if (!rawVideoId) {
+    return (
+      <DefaultLayout>
+        <p>Loading...</p>
+      </DefaultLayout>
+    );
+  }
+
+  if (!currentVideo) {
+    return (
+      <DefaultLayout>
+        <p>Video not found.</p>
+      </DefaultLayout>
+    );
+  }
 
   return (
     <DefaultLayout>
@@ -152,7 +165,7 @@ const VideoPage: React.FC = () => {
                   key={i}
                   videoId={extractVimeoId(vid.url)}
                   title={vid.title}
-                  level={vid.level}
+                  level={vid.level as "Beginner" | "Intermediate" | "Advanced"}
                 />
               ))}
             </div>
