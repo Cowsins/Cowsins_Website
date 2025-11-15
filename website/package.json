@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@heroui/card": "2.2.18",
     "@heroui/modal": "^2.2.16",
     "@heroui/react": "^2.7.8",
