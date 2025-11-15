@@ -167,7 +167,7 @@ const TutorialsModal: React.FC<TutorialsModalProps> = ({
                   key={i}
                   videoId={extractVimeoId(video.url)}
                   title={video.title}
-                  level={video.level}
+                  level={video.level as "Beginner" | "Intermediate" | "Advanced"}
                 />
               ))
             ) : (

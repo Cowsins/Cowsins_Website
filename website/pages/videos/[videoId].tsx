@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { GetStaticProps, GetStaticPaths } from "next";
 import Plyr from "plyr";
 import "plyr/dist/plyr.css";
 import { videos } from "@/utils/videos";
@@ -29,19 +30,27 @@ const getLevelColor = (level: string) => {
   }
 };
 
-const VideoPage: React.FC = () => {
+interface Props {
+  currentVideo?: (typeof videos)[number];
+  videoId?: string;
+}
+
+const VideoPage: React.FC<Props> = ({ currentVideo: ssrVideo, videoId: ssrVideoId }) => {
   const router = useRouter();
 
   // Extract raw ID from router (may be undefined initially)
   const rawVideoId = router.query.videoId as string | undefined;
 
   // Normalize videoId from URL param or raw ID (may be undefined)
-  const videoId = rawVideoId
+  const clientVideoId = rawVideoId
     ? extractVimeoId(`https://player.vimeo.com/video/${rawVideoId}`) || rawVideoId
     : undefined;
 
-  // Find the current video by matching Vimeo ID (may be undefined)
-  const currentVideo = videoId ? videos.find((v) => extractVimeoId(v.url) === videoId) : undefined;
+  // Prefer server-side values when available (direct navigation), otherwise fall back to client-derived
+  const videoId = ssrVideoId || clientVideoId;
+
+  // Prefer the server-provided video when available
+  const currentVideo = ssrVideo || (videoId ? videos.find((v) => extractVimeoId(v.url) === videoId) : undefined);
 
   // Filter related tutorials in the same category, excluding current video
   const relatedTutorials = currentVideo
@@ -177,6 +186,35 @@ const VideoPage: React.FC = () => {
     </main>
     </DefaultLayout>
   );
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = videos.map((v) => {
+    const id = extractVimeoId(v.url);
+    return { params: { videoId: id } };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const raw = params?.videoId as string | undefined;
+  const videoId = raw ? extractVimeoId(`https://player.vimeo.com/video/${raw}`) || raw : undefined;
+  const currentVideo = videoId ? videos.find((v) => extractVimeoId(v.url) === videoId) : undefined;
+
+  if (!currentVideo) {
+    return { notFound: true };
+  }
+
+  return {
+    props: {
+      currentVideo,
+      videoId,
+    },
+  };
 };
 
 export default VideoPage;
