@@ -1,8 +1,10 @@
 import * as React from "react";
-import { Image } from "@heroui/image";
 
 import { IconSvgProps } from "@/types";
-export const Logo: React.FC<IconSvgProps> = ({
+
+type ImgIconProps = React.ImgHTMLAttributes<HTMLImageElement> & { size?: number };
+
+export const Logo: React.FC<ImgIconProps> = ({
   size = 36,
   height,
   ...props

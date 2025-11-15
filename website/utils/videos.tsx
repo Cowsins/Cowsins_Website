@@ -1,4 +1,11 @@
-export const videos = [
+export type VideoItem = {
+  url: string;
+  title: string;
+  category: string;
+  level: "Beginner" | "Intermediate" | "Advanced";
+};
+
+export const videos: VideoItem[] = [
   // FPS ENGINE
   {
     url: "https://player.vimeo.com/video/1085953150",

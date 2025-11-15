@@ -35,7 +35,7 @@ const cards = [
 const GamesCarousel = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [x, setX] = useState(0);
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | null>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const speed = isHovered ? 0.05 : 0.25;
@@ -56,7 +56,9 @@ const GamesCarousel = () => {
   useEffect(() => {
     requestRef.current = requestAnimationFrame(animate);
 
-    return () => cancelAnimationFrame(requestRef.current!);
+    return () => {
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    };
   }, [isHovered]);
 
   return (
