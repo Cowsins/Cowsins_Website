@@ -37,7 +37,10 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const openCowsinsAIDocs = () => {
-    window.open("https://cowsins-ai.gitbook.io/cowsins-ai", "_blank");
+    window.open(
+      "https://github.com/Comrad-Elm0/Cowsins-AI-Basic-DEPRECATED",
+      "_blank",
+    );
   };
 
   const openFPSEngineDocs = () => {
@@ -102,7 +105,7 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
           )}
         </ModalContent>
       </Modal>
-      <NextUINavbar maxWidth="xl" position="sticky" className="z-50">
+      <NextUINavbar maxWidth="xl" position="sticky" className="z-[9999]">
         <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
           <NavbarBrand className="gap-3 max-w-fit">
             <NextLink className="flex justify-start items-center gap-1" href="/">
@@ -138,7 +141,7 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                   </DropdownItem>
                   <DropdownItem
                     key="platformerengine"
-                    description="Latest release"
+                    description="Best Platformer Toolkit"
                   >
                     <Link
                       isExternal
@@ -182,13 +185,6 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                     >
                       Save & Load Add-On
                     </Link>
-                  </DropdownItem>
-                  <DropdownItem
-                    key="inspector"
-                    description="Coming Soon"
-                    style={{ opacity: 0.5 }}
-                  >
-                    Cowins Inspector
                   </DropdownItem>
                 </DropdownSection>
                 <DropdownSection title="Community">
@@ -415,7 +411,7 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                 </DropdownItem>
                 <DropdownItem
                   key="platformerengine"
-                  description="Latest release"
+                  description="Best Platformer Toolkit"
                 >
                   <Link
                     isExternal
@@ -455,9 +451,6 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                   >
                     Save & Load Add-On
                   </Link>
-                </DropdownItem>
-                <DropdownItem key="invpro" description="Coming Soon">
-                  Cowsins Inspector
                 </DropdownItem>
               </DropdownSection>
               <DropdownSection title="Community">

@@ -58,7 +58,7 @@ const ReviewCard = ({ card }: { card: (typeof cards)[0] }) => {
           height: "50%",
           backgroundImage:
             "linear-gradient(to bottom, rgba(32, 28, 28, 0), rgba(32, 28, 28, 1))",
-          pointerEvents: "none", // This ensures the gradient doesn't interfere with mouse events
+          pointerEvents: "none",
         }}
        />
     </Card>

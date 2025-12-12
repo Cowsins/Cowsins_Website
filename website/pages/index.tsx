@@ -1,4 +1,4 @@
-import { Tabs, Tab, Alert, useDisclosure } from "@heroui/react";
+import { Tabs, Tab, Alert } from "@heroui/react";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -8,7 +8,6 @@ import CardScroller from "@/components/CardScroller";
 import CowsinsAssets from "@/components/CowsinsAssets";
 import CommunityAssets from "@/components/CommunityAssets";
 import CowsinsAddons from "@/components/CowsinsAddons";
-import AssetDrawer from "@/components/AssetDrawer";
 import FAQAccordion from "@/components/FAQAccordion";
 
 import Footer from "../components/Footer";
@@ -16,10 +15,6 @@ import styles from "../styles/custom.module.css";
 
 export default function IndexPage() {
   const [selected, setSelected] = React.useState("All");
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [activeAssetKey, setActiveAssetKey] = React.useState<string | null>(
-    null,
-  );
 
   const getHeading = () => {
     switch (selected) {
@@ -36,18 +31,8 @@ export default function IndexPage() {
     }
   };
 
-  const handleCardClick = (key: string) => {
-    setActiveAssetKey(key);
-    onOpen();
-  };
-
   return (
     <DefaultLayout>
-      <AssetDrawer
-        assetKey={activeAssetKey}
-        isOpen={isOpen}
-        onClose={onClose}
-      />
       <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
         <motion.div
           animate={{ opacity: 1 }}
@@ -157,8 +142,8 @@ export default function IndexPage() {
                   }}
                   transition={{ duration: 1, delay: 0.1 }}
                 >
-                  <CowsinsAssets onCardClick={handleCardClick} />
-                  <CommunityAssets onCardClick={handleCardClick} />
+                  <CowsinsAssets />
+                  <CommunityAssets />
                 </motion.div>
               </Tab>
 
@@ -176,7 +161,7 @@ export default function IndexPage() {
                   }}
                   transition={{ duration: 1, delay: 0.1 }}
                 >
-                  <CowsinsAssets onCardClick={handleCardClick} />
+                  <CowsinsAssets />
                 </motion.div>
               </Tab>
 
@@ -198,7 +183,7 @@ export default function IndexPage() {
                   }}
                   transition={{ duration: 1, delay: 0.1 }}
                 >
-                  <CowsinsAddons onCardClick={handleCardClick} />
+                  <CowsinsAddons />
                 </motion.div>
               </Tab>
               <Tab key="Community" title="Community">
@@ -219,7 +204,7 @@ export default function IndexPage() {
                   }}
                   transition={{ duration: 1, delay: 0.1 }}
                 >
-                  <CommunityAssets onCardClick={handleCardClick} />
+                  <CommunityAssets />
                 </motion.div>
               </Tab>
             </Tabs>

@@ -3,11 +3,7 @@ import { siteConfig } from "@/config/site";
 import AssetCard from "./AssetCard";
 import CowsinsAddons from "./CowsinsAddons";
 
-const CowsinsAssets = ({
-  onCardClick,
-}: {
-  onCardClick: (key: string) => void;
-}) => {
+const CowsinsAssets = () => {
   return (
     <>
       <AssetCard
@@ -18,7 +14,6 @@ const CowsinsAssets = ({
         link={siteConfig.links.fpsengine}
         subtitle="Best Seller"
         title="FPS Engine"
-        onClick={() => onCardClick("fps_engine")}
       />
       <AssetCard
         imageSrc1="2d-engine.webp"
@@ -28,7 +23,6 @@ const CowsinsAssets = ({
         link={siteConfig.links.platformerengine}
         subtitle=""
         title="Platformer Engine"
-        onClick={() => onCardClick("platformer_engine")}
       />
       <AssetCard
         imageSrc1="BulletHellEngine.webp"
@@ -38,9 +32,8 @@ const CowsinsAssets = ({
         link={siteConfig.links.bullethellengine}
         subtitle=""
         title="Bullet Hell Engine"
-        onClick={() => onCardClick("bullet_hell_engine")}
       />
-      <CowsinsAddons onCardClick={onCardClick} />
+      <CowsinsAddons />
     </>
   );
 };

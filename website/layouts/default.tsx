@@ -1,5 +1,3 @@
-// DefaultLayout.tsx
-
 import { Navbar } from "@/components/navbar";
 import { Head } from "./head";
 import TutorialsModal from "@/components/TutorialsModal";
@@ -15,7 +13,7 @@ interface MetaProps {
 export default function DefaultLayout({
   children,
   meta,
-  maxWidth = " mx-auto  max-w-7xl", // default value
+  maxWidth = " mx-auto  max-w-7xl",
 }: {
   children: React.ReactNode;
   meta?: MetaProps;

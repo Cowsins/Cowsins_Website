@@ -11,3 +11,25 @@
 html, body, #__next {
 	background-color: #0b0b0b;
 }
+
+/* Utility to hide scrollbars while preserving scrolling (mobile-friendly) */
+.no-scrollbar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Opera */
+}
+
+/* Center the tutorials modal on small screens and constrain size */
+@media (max-width: 640px) {
+	.tutorials-modal {
+		position: fixed !important;
+		top: 50% !important;
+		left: 50% !important;
+		transform: translate(-50%, -50%) !important;
+		width: 95% !important;
+		max-height: 90vh !important;
+		border-radius: 0.5rem !important;
+	}
+}
