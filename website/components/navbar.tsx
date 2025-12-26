@@ -62,7 +62,7 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
     );
   };
 
-   const openPlatformerEngineDocs = () => {
+  const openPlatformerEngineDocs = () => {
     window.open(
       "https://cowsinss-organization.gitbook.io/platformer-documentation/",
       "_blank",
@@ -105,7 +105,7 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
           )}
         </ModalContent>
       </Modal>
-      <NextUINavbar maxWidth="xl" position="sticky" className="z-[9999]">
+      <NextUINavbar maxWidth="xl" position="sticky" className="z-50">
         <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
           <NavbarBrand className="gap-3 max-w-fit">
             <NextLink className="flex justify-start items-center gap-1" href="/">

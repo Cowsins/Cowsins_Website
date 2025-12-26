@@ -46,9 +46,11 @@
   .content {
     top: 25%;
   }
+
   .gradientOverlay {
     height: 100%;
   }
+
   .backgroundContainer {
     height: 75vh;
     margin-top: -40%;
@@ -64,24 +66,26 @@
 
 .scrollerCard {
   flex: 0 0 auto;
-  width: 300px; /* Ensure all cards have the same width */
+  width: 300px;
+  /* Ensure all cards have the same width */
   height: 200px;
-  margin-right: 1rem; /* Adjust gap between cards */
+  margin-right: 1rem;
+  /* Adjust gap between cards */
 }
 
 .scroller {
   display: flex;
   gap: 1rem;
-  white-space: nowrap;
-  /* Remove duplicate cards */
+  width: max-content;
   animation: scroll var(--animation-duration, 60s) linear infinite;
 }
 
 @keyframes scroll {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
+
   100% {
-    transform: translateX(calc(-100% - 1rem)); /* Adjust based on card width */
+    transform: translateX(-50%);
   }
 }

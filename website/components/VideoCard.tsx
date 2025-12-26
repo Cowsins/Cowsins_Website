@@ -28,7 +28,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ videoId, title, level }) => {
     <Link href={`/videos/${videoId}`}>
       <div className="cursor-pointer rounded-2xl overflow-hidden">
         <motion.div
-          whileHover={{ scale: .96  }}
+          whileHover={{ scale: .96 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="overflow-hidden rounded-lg"
         >

@@ -60,7 +60,7 @@ const ReviewCard = ({ card }: { card: (typeof cards)[0] }) => {
             "linear-gradient(to bottom, rgba(32, 28, 28, 0), rgba(32, 28, 28, 1))",
           pointerEvents: "none",
         }}
-       />
+      />
     </Card>
   );
 };

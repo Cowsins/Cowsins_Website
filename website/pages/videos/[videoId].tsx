@@ -130,63 +130,63 @@ const VideoPage: React.FC<Props> = ({ currentVideo: ssrVideo, videoId: ssrVideoI
 
       <main className="max-w-[1100px] mx-auto pl-4 pr-4 grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-8 items-start h-full overflow-hidden">
 
-      <section>
-      <Breadcrumbs className="pb-3">
+        <section>
+          <Breadcrumbs className="pb-3">
             <BreadcrumbItem href="/">Home</BreadcrumbItem>
             <BreadcrumbItem href="/">Tutorials</BreadcrumbItem>
             <BreadcrumbItem href="/">{currentVideo.category}</BreadcrumbItem>
             <BreadcrumbItem>{currentVideo.title}</BreadcrumbItem>
-      </Breadcrumbs>
+          </Breadcrumbs>
 
-        <div className="rounded-2xl overflow-hidden mb-10 md:sticky md:top-16 md:max-h-[calc(100vh-4rem)] md:overflow-hidden">
-          <div
-            className="aspect-video h-full"
-            ref={playerRef}
-            data-plyr-provider="vimeo"
-            data-plyr-embed-id={videoId}
-          />
-        </div>
-        <h1 className="text-3xl font-bold mt-10 mb-4">{currentVideo.title}</h1>
-        <Chip
-          color={getLevelColor(currentVideo.level)}
-          size="sm"
-          variant="flat"
-          radius="sm"
-        >
-          {currentVideo.level} Difficulty
-        </Chip>
-        <div className="mt-4">
-           <a href={siteConfig.links.discord}>
-                <Button>
-                  Do you need help? Join us on
-                  <DiscordIcon className="text-default-500" />
-                  Discord
-                </Button>
-              </a>
-        </div>
-      </section>
+          <div className="rounded-2xl overflow-hidden mb-10 md:sticky md:top-16 md:max-h-[calc(100vh-4rem)] md:overflow-hidden">
+            <div
+              className="aspect-video h-full"
+              ref={playerRef}
+              data-plyr-provider="vimeo"
+              data-plyr-embed-id={videoId}
+            />
+          </div>
+          <h1 className="text-3xl font-bold mt-10 mb-4">{currentVideo.title}</h1>
+          <Chip
+            color={getLevelColor(currentVideo.level)}
+            size="sm"
+            variant="flat"
+            radius="sm"
+          >
+            {currentVideo.level} Difficulty
+          </Chip>
+          <div className="mt-4">
+            <a href={siteConfig.links.discord}>
+              <Button>
+                Do you need help? Join us on
+                <DiscordIcon className="text-default-500" />
+                Discord
+              </Button>
+            </a>
+          </div>
+        </section>
 
 
-      <aside className="md:max-h-[calc(100vh-4rem)] md:overflow-y-auto md:pr-2">
-        {relatedTutorials.length ? (
-          <>
-            <h2 className="font-semibold text-lg mb-4">Related Tutorials</h2>
-            <div className="space-y-4">
-              {relatedTutorials.map((vid, i) => (
-                <VideoCard
-                  key={i}
-                  videoId={extractVimeoId(vid.url)}
-                  title={vid.title}
-                  level={vid.level as "Beginner" | "Intermediate" | "Advanced"}
-                />
-              ))}
-            </div>
-          </>
-        ) : (
-          <p className="text-gray-500 italic">No related tutorials available.</p>
-        )}
-      </aside>
-    </main>
+        <aside className="md:max-h-[calc(100vh-4rem)] md:overflow-y-auto md:pr-2">
+          {relatedTutorials.length ? (
+            <>
+              <h2 className="font-semibold text-lg mb-4">Related Tutorials</h2>
+              <div className="space-y-4">
+                {relatedTutorials.map((vid, i) => (
+                  <VideoCard
+                    key={i}
+                    videoId={extractVimeoId(vid.url)}
+                    title={vid.title}
+                    level={vid.level as "Beginner" | "Intermediate" | "Advanced"}
+                  />
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className="text-gray-500 italic">No related tutorials available.</p>
+          )}
+        </aside>
+      </main>
     </DefaultLayout>
   );
 };
