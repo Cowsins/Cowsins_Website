@@ -33,6 +33,15 @@ const CowsinsAssets = () => {
         subtitle=""
         title="Bullet Hell Engine"
       />
+      <AssetCard
+        imageSrc1="OmniSaveBackground.png"
+        imageSrc2="OmniSaveLogo.png"
+        imageSrc3=""
+        isFree={false}
+        link={siteConfig.links.omnisave}
+        subtitle="Advanced Save & Load System"
+        title="OmniSave"
+      />
       <CowsinsAddons />
     </>
   );
