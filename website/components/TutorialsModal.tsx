@@ -24,17 +24,14 @@ import {
 } from "react-icons/fa";
 
 import VideoCard from "./VideoCard";
-import { videos } from "@/utils/videos";
+import { videos, parseVideoUrl } from "@/utils/videos";
 
 interface TutorialsModalProps {
   isOpen: boolean;
   onOpenChange: (isOpen: boolean) => void;
 }
 
-const extractVimeoId = (url: string) => {
-  const match = url.match(/video\/(\d+)/);
-  return match ? match[1] : "";
-};
+
 
 const categories = [
   { id: "FPS Engine", label: "FPS Engine", icon: FaCrosshairs },
@@ -43,6 +40,7 @@ const categories = [
   { id: "Platformer Engine", label: "Platformer Engine", icon: FaGamepad },
   { id: "Bullet Hell Engine", label: "Bullet Hell Engine", icon: FaSkull },
   { id: "Legs + IKs Add-On", label: "Legs + IKs", icon: FaRunning },
+  { id: "OmniSave", label: "OmniSave", icon: FaSave },
 ];
 
 const TutorialsModal: React.FC<TutorialsModalProps> = ({
@@ -246,14 +244,19 @@ const TutorialsModal: React.FC<TutorialsModalProps> = ({
                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
                   {filteredVideos.length > 0 ? (
-                    filteredVideos.map((video, i) => (
-                      <VideoCard
-                        key={i}
-                        videoId={extractVimeoId(video.url)}
-                        title={video.title}
-                        level={video.level as "Beginner" | "Intermediate" | "Advanced"}
-                      />
-                    ))
+                    filteredVideos.map((video, i) => {
+                      const parsed = parseVideoUrl(video.url);
+                      if (!parsed) return null;
+                      return (
+                        <VideoCard
+                          key={i}
+                          videoId={parsed.id}
+                          provider={parsed.provider}
+                          title={video.title}
+                          level={video.level as "Beginner" | "Intermediate" | "Advanced"}
+                        />
+                      );
+                    })
                   ) : (
                     <div className="col-span-full flex flex-col items-center justify-center py-20 text-center">
                       <div className="p-4 rounded-full bg-white/5 mb-4">

@@ -61,6 +61,9 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
       "_blank",
     );
   };
+  const openOmniSaveDocs = () => {
+    window.open(siteConfig.links.omnisave_docs, "_blank");
+  };
 
   const openPlatformerEngineDocs = () => {
     window.open(
@@ -186,6 +189,16 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                       Save & Load Add-On
                     </Link>
                   </DropdownItem>
+                  <DropdownItem key="omnisave" description="The Ultimate Save System">
+                    <Link
+                      isExternal
+                      showAnchorIcon
+                      color="foreground"
+                      href={siteConfig.links.omnisave}
+                    >
+                      OmniSave
+                    </Link>
+                  </DropdownItem>
                 </DropdownSection>
                 <DropdownSection title="Community">
                   <DropdownItem key="ai" description="Created by Comrad Elmo">
@@ -257,6 +270,12 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                     onPress={openSaveLoadDocs}
                   >
                     Save & Load Add-On
+                  </DropdownItem>
+                  <DropdownItem
+                    key="omnisavedocs"
+                    onPress={openOmniSaveDocs}
+                  >
+                    OmniSave
                   </DropdownItem>
                 </DropdownSection>
                 <DropdownSection title="Community">
@@ -452,6 +471,16 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                     Save & Load Add-On
                   </Link>
                 </DropdownItem>
+                <DropdownItem key="omnisave">
+                  <Link
+                    isExternal
+                    showAnchorIcon
+                    color="foreground"
+                    href={siteConfig.links.omnisave}
+                  >
+                    OmniSave
+                  </Link>
+                </DropdownItem>
               </DropdownSection>
               <DropdownSection title="Community">
                 <DropdownItem key="ai" description="Created by Comrad Elmo">
@@ -495,6 +524,9 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                 </DropdownItem>
                 <DropdownItem key="fpsengine" onPress={openSaveLoadDocs}>
                   Save & Load Add-On
+                </DropdownItem>
+                <DropdownItem key="omnisavedocs" onPress={openOmniSaveDocs}>
+                  OmniSave
                 </DropdownItem>
               </DropdownSection>
               <DropdownSection title="Community">
