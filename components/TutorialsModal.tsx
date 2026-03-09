@@ -40,6 +40,7 @@ const categories = [
   { id: "Platformer Engine", label: "Platformer Engine", icon: FaGamepad },
   { id: "Bullet Hell Engine", label: "Bullet Hell Engine", icon: FaSkull },
   { id: "Legs + IKs Add-On", label: "Legs + IKs", icon: FaRunning },
+  { id: "OmniSave", label: "OmniSave", icon: FaSave },
 ];
 
 const TutorialsModal: React.FC<TutorialsModalProps> = ({

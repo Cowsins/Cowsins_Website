@@ -24,5 +24,7 @@ export const siteConfig = {
     youtube: "https://rumble.com/user/CowsinsGames/videos",
     cowsinsaitutorial:
       "https://www.youtube.com/playlist?list=PLFDlsE9sYjL-fpnT6RTmMoYVrf1GuZGFT",
+    omnisave: "https://assetstore.unity.com/packages/tools/utilities/omnisave-364390",
+    omnisave_docs: "https://cowsinss-organization.gitbook.io/omni-save-documentation",
   },
 };
