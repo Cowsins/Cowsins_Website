@@ -10,7 +10,6 @@ export type VideoItem = {
 
 export const parseVideoUrl = (
   url: string
-): { provider: VideoProvider; id: string } | null => {
   const vimeo = url.match(
     /(?:player\.)?vimeo\.com\/(?:video\/)?(\d+)/
   );
@@ -19,7 +18,11 @@ export const parseVideoUrl = (
   const youtube = url.match(
     /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/
   );
-  if (youtube) return { provider: "youtube", id: youtube[1] };
+  if (youtube) {
+    const timestampMatch = url.match(/[?&]t=(\d+s?)/);
+    const timestamp = timestampMatch ? timestampMatch[1] : undefined;
+    return { provider: "youtube", id: youtube[1], timestamp };
+  }
 
   return null;
 };
@@ -74,6 +77,12 @@ export const videos: VideoItem[] = [
   {
     url: "https://youtu.be/RBM_jEIO79k",
     title: "How to Export a Weapon from Blender to FPS Engine",
+    category: "FPS Engine",
+    level: "Beginner",
+  },
+  {
+    url: "https://www.youtube.com/watch?v=akpdlovMQNk&t",
+    title: "FPS Engine Arms Retargeting Tutorial (Step-by-Step)",
     category: "FPS Engine",
     level: "Beginner",
   },
@@ -300,6 +309,12 @@ export const videos: VideoItem[] = [
   {
     url: "https://youtu.be/4SNndZbg75g",
     title: "Persisting Spawned & Destroyed Objects in OmniSave: How to Save & Load your game in Unity",
+    category: "OmniSave",
+    level: "Beginner",
+  },
+  {
+    url: "https://youtu.be/4JVdPmROf7U",
+    title: "How to Import OmniSave in Unity",
     category: "OmniSave",
     level: "Beginner",
   },
