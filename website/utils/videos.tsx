@@ -10,6 +10,7 @@ export type VideoItem = {
 
 export const parseVideoUrl = (
   url: string
+): { provider: VideoProvider; id: string; timestamp?: string } | null => {
   const vimeo = url.match(
     /(?:player\.)?vimeo\.com\/(?:video\/)?(\d+)/
   );
