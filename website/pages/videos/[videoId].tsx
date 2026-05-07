@@ -8,7 +8,7 @@ import DefaultLayout from "@/layouts/default";
 import { BreadcrumbItem, Breadcrumbs, Button, Chip } from "@heroui/react";
 import VideoCard from "@/components/VideoCard";
 import { siteConfig } from "@/config/site";
-import { DiscordIcon } from "@/components/icons";
+import { DiscordIcon, YoutubeIcon } from "@/components/icons";
 
 const getLevelColor = (level: string) => {
   switch (level) {
@@ -178,12 +178,29 @@ const VideoPage: React.FC<Props> = ({
           >
             {currentVideo.level} Difficulty
           </Chip>
-          <div className="mt-4">
-            <a href={siteConfig.links.discord}>
-              <Button>
+          <div className="mt-4 flex flex-col sm:flex-row gap-4">
+            <a
+              href={siteConfig.links.discord}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <Button className="w-full">
                 Do you need help? Join us on
                 <DiscordIcon className="text-default-500" />
                 Discord
+              </Button>
+            </a>
+            <a
+              href={siteConfig.links.youtube_subscribe}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <Button color="danger" variant="flat" className="w-full">
+                Follow Cowsins on
+                <YoutubeIcon className="text-danger" />
+                YouTube
               </Button>
             </a>
           </div>

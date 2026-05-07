@@ -21,7 +21,8 @@ export const siteConfig = {
       "https://assetstore.unity.com/packages/tools/game-toolkits/bullet-hell-engine-249720",
     cowsinai: "https://github.com/Comrad-Elm0/Cowsins-AI-Basic-DEPRECATED",
     legs_iks_addon: "https://5844526137786.gumroad.com/l/legs-iks-addon",
-    youtube: "https://rumble.com/user/CowsinsGames/videos",
+    youtube: "https://www.youtube.com/@Cowsins_Games",
+    youtube_subscribe: "https://www.youtube.com/@Cowsins_Games?sub_confirmation=1",
     cowsinsaitutorial:
       "https://www.youtube.com/playlist?list=PLFDlsE9sYjL-fpnT6RTmMoYVrf1GuZGFT",
     omnisave: "https://assetstore.unity.com/packages/tools/utilities/omnisave-364390",
