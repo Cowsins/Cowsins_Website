@@ -88,14 +88,14 @@ export const videos: VideoItem[] = [
     level: "Beginner",
   },
   {
-    url: "https://player.vimeo.com/video/1094068445",
-    title: "How to add Attachments in FPS Engine >1.3.8",
+    url: "https://youtu.be/Taekr6L5_0s",
+    title: "Bullet Pickeables & Ammo Types in FPS Engine",
     category: "FPS Engine",
     level: "Beginner",
   },
   {
-    url: "https://player.vimeo.com/video/1085954742",
-    title: "Working with Attachments in FPS Engine [DEPRECATED <1.3.7]",
+    url: "https://youtu.be/BuJ3d4ssMdQ",
+    title: "Working with Attachments in FPS Engine",
     category: "FPS Engine",
     level: "Beginner",
   },
