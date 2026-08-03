@@ -10,7 +10,7 @@ const CowsinsAddons = () => {
         imageSrc2="inventoryLogo.webp"
         imageSrc3=""
         isFree={false}
-        link={siteConfig.links.platformerengine}
+        link={siteConfig.links.inventorypro}
         subtitle="FPS ENGINE ADD-ON"
         title="Inventory Pro Add-On"
       />

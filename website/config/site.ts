@@ -19,6 +19,8 @@ export const siteConfig = {
       "https://assetstore.unity.com/packages/templates/systems/2d-platformer-engine-266973",
     bullethellengine:
       "https://assetstore.unity.com/packages/tools/game-toolkits/bullet-hell-engine-249720",
+    inventorypro:
+      "https://assetstore.unity.com/packages/templates/systems/inventory-pro-add-on-for-fps-engine-318131?srsltid=AfmBOor318KWryP5ZShmPLmhMt6SF6ZKQHCb0zm8hJl1hVm2wN4z_Qv6",
     cowsinai: "https://github.com/Comrad-Elm0/Cowsins-AI-Basic-DEPRECATED",
     legs_iks_addon: "https://5844526137786.gumroad.com/l/legs-iks-addon",
     youtube: "https://www.youtube.com/@Cowsins_Games",

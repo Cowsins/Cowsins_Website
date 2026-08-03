@@ -174,7 +174,7 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                       isExternal
                       showAnchorIcon
                       color="foreground"
-                      href={siteConfig.links.bullethellengine}
+                      href={siteConfig.links.inventorypro}
                     >
                       Inventory Pro Add-On
                     </Link>
@@ -456,7 +456,7 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                     isExternal
                     showAnchorIcon
                     color="foreground"
-                    href={siteConfig.links.bullethellengine}
+                    href={siteConfig.links.inventorypro}
                   >
                     Inventory Pro Add-On
                   </Link>
