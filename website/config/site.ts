@@ -27,6 +27,7 @@ export const siteConfig = {
     youtube_subscribe: "https://www.youtube.com/@Cowsins_Games?sub_confirmation=1",
     cowsinsaitutorial:
       "https://www.youtube.com/playlist?list=PLFDlsE9sYjL-fpnT6RTmMoYVrf1GuZGFT",
+    saveloadaddon: "https://assetstore.unity.com/packages/templates/systems/save-load-add-on-for-fps-engine-316848",
     omnisave: "https://assetstore.unity.com/packages/tools/utilities/omnisave-364390",
     omnisave_docs: "https://cowsinss-organization.gitbook.io/omni-save-documentation",
   },

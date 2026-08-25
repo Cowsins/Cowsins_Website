@@ -184,7 +184,7 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                       isExternal
                       showAnchorIcon
                       color="foreground"
-                      href={siteConfig.links.platformerengine}
+                      href={siteConfig.links.saveloadaddon}
                     >
                       Save & Load Add-On
                     </Link>
@@ -466,7 +466,7 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                     isExternal
                     showAnchorIcon
                     color="foreground"
-                    href={siteConfig.links.bullethellengine}
+                    href={siteConfig.links.saveloadaddon}
                   >
                     Save & Load Add-On
                   </Link>
@@ -519,10 +519,10 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                 <DropdownItem key="bullethellengine" onPress={onOpen}>
                   Bullet Hell Engine
                 </DropdownItem>
-                <DropdownItem key="fpsengine" onPress={openInventoryDocs}>
+                <DropdownItem key="inventoryaddon" onPress={openInventoryDocs}>
                   Inventory Pro Add-On
                 </DropdownItem>
-                <DropdownItem key="fpsengine" onPress={openSaveLoadDocs}>
+                <DropdownItem key="saveloadaddon" onPress={openSaveLoadDocs}>
                   Save & Load Add-On
                 </DropdownItem>
                 <DropdownItem key="omnisavedocs" onPress={openOmniSaveDocs}>
