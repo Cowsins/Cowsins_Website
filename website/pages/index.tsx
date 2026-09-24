@@ -63,8 +63,8 @@ export default function IndexPage() {
                   alt="Award nomination"
                   className="w-5 h-5 object-contain"
                 />
-                <span className="text-sm font-medium text-white/80 tracking-wide">
-                  15th Unity Awards Nominee
+                <span className="text-sm font-semibold text-white/90 tracking-wide">
+                  15th Unity Awards Winner
                 </span>
               </motion.div>
               <motion.h1
