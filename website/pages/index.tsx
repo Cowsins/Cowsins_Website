@@ -53,7 +53,7 @@ export default function IndexPage() {
               transition={{ duration: 1 }}
             >
               <motion.div
-                className="mx-auto mb-8 flex w-max items-center justify-center gap-3 rounded-full border border-white/10 bg-white/5 py-1.5 px-4 backdrop-blur-md transition-all hover:bg-white/10 cursor-default shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+                className="mx-auto mb-8 flex w-max items-center justify-center gap-3 rounded-lg border border-white/10 bg-white/5 py-1.5 px-4 backdrop-blur-md transition-all hover:bg-white/10 cursor-default shadow-[0_0_15px_rgba(255,255,255,0.05)]"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
