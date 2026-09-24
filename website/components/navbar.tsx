@@ -368,7 +368,10 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
           className="hidden sm:flex basis-1/5 sm:basis-full"
           justify="end"
         >
-          <NavbarItem className="hidden sm:flex gap-2">
+          <NavbarItem className="hidden sm:flex gap-4 items-center">
+            <a href="https://buymeacoffee.com/cowsins" target="_blank" rel="noreferrer" className="flex items-center">
+              <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style={{ height: 30 }} suppressHydrationWarning />
+            </a>
             <Link isExternal href={siteConfig.links.twitter}>
               <TwitterIcon className="text-default-500" />
             </Link>
@@ -392,7 +395,10 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
           </NavbarItem>
         </NavbarContent>
 
-        <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+        <NavbarContent className="sm:hidden basis-1 pl-4 gap-4 items-center" justify="end">
+          <a href="https://buymeacoffee.com/cowsins" target="_blank" rel="noreferrer" className="flex items-center">
+            <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style={{ height: 30 }} suppressHydrationWarning />
+          </a>
           <Link isExternal href={siteConfig.links.twitter}>
             <TwitterIcon className="text-default-500" />
           </Link>
