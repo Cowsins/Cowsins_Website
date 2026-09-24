@@ -13,13 +13,15 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <HeroUIProvider navigate={router.push}>
       <NextThemesProvider defaultTheme="dark" forcedTheme="dark" attribute="class" enableSystem={false}>
-        <Component {...pageProps} />
+        <main className={`${fontSans.variable} ${fontMono.variable} font-sans`}>
+          <Component {...pageProps} />
+        </main>
       </NextThemesProvider>
     </HeroUIProvider>
   );
 }
 
 export const fonts = {
-  sans: fontSans.style.fontFamily,
-  mono: fontMono.style.fontFamily,
+  sans: fontSans.style?.fontFamily || fontSans.className,
+  mono: fontMono.style?.fontFamily || fontMono.className,
 };
