@@ -11,13 +11,21 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
-    <HeroUIProvider navigate={router.push}>
-      <NextThemesProvider defaultTheme="dark" forcedTheme="dark" attribute="class" enableSystem={false}>
-        <main className={`${fontSans.variable} ${fontMono.variable} font-sans`}>
-          <Component {...pageProps} />
-        </main>
-      </NextThemesProvider>
-    </HeroUIProvider>
+    <>
+      <style jsx global>{`
+        :root {
+          --font-sans: ${fontSans.style.fontFamily};
+          --font-mono: ${fontMono.style.fontFamily};
+        }
+      `}</style>
+      <HeroUIProvider navigate={router.push}>
+        <NextThemesProvider defaultTheme="dark" forcedTheme="dark" attribute="class" enableSystem={false}>
+          <main className="font-sans">
+            <Component {...pageProps} />
+          </main>
+        </NextThemesProvider>
+      </HeroUIProvider>
+    </>
   );
 }
 
