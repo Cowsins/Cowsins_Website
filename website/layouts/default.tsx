@@ -22,7 +22,7 @@ export default function DefaultLayout({
   const tutorialsModal = useDisclosure();
 
   return (
-    <div className="relative flex flex-col h-screen">
+    <div className="relative flex flex-col min-h-screen">
       <Head {...meta} />
       <Navbar onTutorialsClick={tutorialsModal.onOpen} />
       <TutorialsModal
