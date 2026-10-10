@@ -150,6 +150,12 @@ export const videos: VideoItem[] = [
   },
   // MULTIPLAYER ADD-ON
   {
+    url: "https://youtu.be/TOolfvmpW5s",
+    title: "How to Install the Multiplayer Add-On for FPS Engine",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+  },
+  {
     url: "https://youtu.be/vRTdklRQitk",
     title: "Getting Started with the Multiplayer Add-On for FPS Engine",
     category: "Multiplayer Add-On",
