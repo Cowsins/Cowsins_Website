@@ -6,6 +6,7 @@ export type VideoItem = {
   category: string;
   level: "Beginner" | "Intermediate" | "Advanced";
   provider?: VideoProvider;
+  series?: string;
 };
 
 export const parseVideoUrl = (
@@ -147,6 +148,96 @@ export const videos: VideoItem[] = [
     category: "FPS Engine",
     level: "Beginner",
   },
+  // MULTIPLAYER ADD-ON
+  {
+    url: "https://youtu.be/vRTdklRQitk",
+    title: "Getting Started with the Multiplayer Add-On for FPS Engine",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+  },
+  {
+    url: "https://youtu.be/AsMN3ba4vjE",
+    title: "Replacing the Character in Multiplayer Add-On for FPS Engine",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+  },
+  {
+    url: "https://youtu.be/MEzBvwnrdDE",
+    title: "Gun Game in Multiplayer Add-On for FPS Engine | Game Modes #4",
+    category: "Multiplayer Add-On",
+    level: "Intermediate",
+    series: "Game Mode System Series",
+  },
+  {
+    url: "https://youtu.be/tGZz5VDRhmw",
+    title: "Point Capture Game Mode in Multiplayer Add-On for FPS Engine | Game Modes #3",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+    series: "Game Mode System Series",
+  },
+  {
+    url: "https://youtu.be/xOElO5mGOuE",
+    title: "1v1 Game Mode in Multiplayer Add-On for FPS Engine | Game Modes #2",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+    series: "Game Mode System Series",
+  },
+  {
+    url: "https://youtu.be/Dk2zFQOMkoc",
+    title: "FFA Game Mode in Multiplayer Add-On for FPS Engine | Game Modes #1",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+    series: "Game Mode System Series",
+  },
+  {
+    url: "https://youtu.be/PuIqUlF9vl8",
+    title: "Adding Networked Weapons in Multiplayer Add-On for FPS Engine",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+  },
+  {
+    url: "https://youtu.be/48uA17Tx8zo",
+    title: "Testing your game in Multiplayer Add-On for FPS Engine (LAN)",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+  },
+  {
+    url: "https://youtu.be/nAykFjZJxjA",
+    title: "Left Hand IKs for Weapons in Multiplayer Add-On for FPS Engine",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+  },
+  {
+    url: "https://youtu.be/ReNmaEh-r3E",
+    title: "1-Click switch from LAN to Steam in Multiplayer Add-On for FPS Engine",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+  },
+  {
+    url: "https://youtu.be/1Bqdq1b_f5k",
+    title: "Using Steam in Multiplayer Add-On for FPS Engine",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+  },
+  {
+    url: "https://youtu.be/miv2bIRWS4Q",
+    title: "Networked Props in Multiplayer Add-On for FPS Engine!",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+  },
+  {
+    url: "https://youtu.be/SQZuBxoPVko",
+    title: "Accolades in Multiplayer Add-On for FPS Engine",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+  },
+  {
+    url: "https://youtu.be/4U1GMu-kwMM",
+    title: "Loadouts in Multiplayer Add-On for FPS Engine",
+    category: "Multiplayer Add-On",
+    level: "Beginner",
+  },
+
   // INVENTORY PRO ADD-ON
   {
     url: "https://player.vimeo.com/video/1085636055",

@@ -5,7 +5,7 @@ import Plyr from "plyr";
 import "plyr/dist/plyr.css";
 import { videos, parseVideoUrl, getThumbnailUrl, VideoProvider } from "@/utils/videos";
 import DefaultLayout from "@/layouts/default";
-import { BreadcrumbItem, Breadcrumbs, Button, Chip } from "@heroui/react";
+import { BreadcrumbItem, Breadcrumbs, Button, Chip, ScrollShadow } from "@heroui/react";
 import VideoCard from "@/components/VideoCard";
 import { siteConfig } from "@/config/site";
 import { DiscordIcon, YoutubeIcon } from "@/components/icons";
@@ -149,95 +149,104 @@ const VideoPage: React.FC<Props> = ({
         image: ogImage,
         url: ogUrl,
       }}
+      maxWidth=" !max-w-[1800px] w-full mx-auto"
     >
-      <main className="max-w-[1100px] mx-auto pl-4 pr-4 grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-8 items-start h-full overflow-hidden">
-        <section>
-          <Breadcrumbs className="pb-3">
+      <main className="w-full px-0 sm:px-4 py-8 grid grid-cols-1 lg:grid-cols-[1fr_380px] xl:grid-cols-[1fr_450px] gap-10 items-start">
+        <section className="flex flex-col gap-6">
+          <Breadcrumbs size="sm" className="mb-2">
             <BreadcrumbItem href="/">Home</BreadcrumbItem>
             <BreadcrumbItem href="/">Tutorials</BreadcrumbItem>
             <BreadcrumbItem href="/">{currentVideo.category}</BreadcrumbItem>
-            <BreadcrumbItem>{currentVideo.title}</BreadcrumbItem>
+            <BreadcrumbItem className="text-white/50">{currentVideo.title}</BreadcrumbItem>
           </Breadcrumbs>
 
-          <div className="rounded-2xl overflow-hidden mb-10 md:sticky md:top-16 md:max-h-[calc(100vh-4rem)] md:overflow-hidden">
+          <div className="rounded-[32px] overflow-hidden shadow-2xl border border-white/10 bg-black/50">
             <div
-              className="aspect-video h-full"
+              className="aspect-video w-full"
               ref={playerRef}
               data-plyr-provider={provider}
               data-plyr-embed-id={videoId}
             />
           </div>
-          <h1 className="text-3xl font-bold mt-10 mb-4">
-            {currentVideo.title}
-          </h1>
-          <Chip
-            color={getLevelColor(currentVideo.level)}
-            size="sm"
-            variant="flat"
-            radius="sm"
-          >
-            {currentVideo.level} Difficulty
-          </Chip>
-          <div className="mt-4 flex flex-col sm:flex-row gap-4">
-            <a
-              href={siteConfig.links.discord}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto"
-            >
-              <Button className="w-full">
-                Do you need help? Join us on
-                <DiscordIcon className="text-default-500" />
-                Discord
+          
+          <div className="flex flex-col gap-4 mt-2">
+            <div className="flex flex-wrap items-center gap-3">
+              <Chip
+                color={getLevelColor(currentVideo.level)}
+                size="sm"
+                variant="flat"
+                radius="full"
+                className="font-medium tracking-wide px-2"
+              >
+                {currentVideo.level}
+              </Chip>
+              <Chip size="sm" variant="faded" radius="full" className="border-white/10 text-white/70 px-2 bg-white/5">
+                {currentVideo.category}
+              </Chip>
+            </div>
+            
+            <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
+              {currentVideo.title}
+            </h1>
+            
+            <div className="flex flex-wrap gap-4 mt-4 pt-6 border-t border-white/10">
+              <Button
+                as="a"
+                href={siteConfig.links.discord}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#5865F2] text-white font-medium shadow-lg shadow-[#5865F2]/20"
+                startContent={<DiscordIcon />}
+                radius="full"
+              >
+                Need help? Join Discord
               </Button>
-            </a>
-            <a
-              href={siteConfig.links.youtube_subscribe}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto"
-            >
-              <Button color="danger" variant="flat" className="w-full">
-                Follow Cowsins on
-                <YoutubeIcon className="text-danger" />
-                YouTube
+              <Button
+                as="a"
+                href={siteConfig.links.youtube_subscribe}
+                target="_blank"
+                rel="noopener noreferrer"
+                color="danger"
+                variant="flat"
+                className="font-medium"
+                startContent={<YoutubeIcon className="text-danger" />}
+                radius="full"
+              >
+                Subscribe on YouTube
               </Button>
-            </a>
+            </div>
           </div>
         </section>
 
-        <aside className="md:max-h-[calc(100vh-4rem)] md:overflow-y-auto md:pr-2">
-          {relatedTutorials.length ? (
-            <>
-              <h2 className="font-semibold text-lg mb-4">
-                Related Tutorials
-              </h2>
-              <div className="space-y-4">
-                {relatedTutorials.map((vid, i) => {
-                  const p = parseVideoUrl(vid.url);
-                  if (!p) return null;
-                  return (
-                    <VideoCard
-                      key={i}
-                      videoId={p.id}
-                      provider={p.provider}
-                      title={vid.title}
-                      level={
-                        vid.level as
-                        | "Beginner"
-                        | "Intermediate"
-                        | "Advanced"
-                      }
-                    />
-                  );
-                })}
+        <aside className="flex flex-col gap-6 lg:sticky lg:top-24">
+          <div className="flex items-center justify-between pb-4 border-b border-white/10">
+            <h2 className="text-xl font-bold text-white/90 tracking-tight">Related Tutorials</h2>
+            <span className="text-xs font-medium text-white/50 bg-white/5 px-3 py-1 rounded-full border border-white/5">
+              {relatedTutorials.length} Videos
+            </span>
+          </div>
+          
+          <ScrollShadow className="flex flex-col gap-5 lg:max-h-[calc(100vh-14rem)] pb-10 pr-4 custom-scrollbar">
+            {relatedTutorials.length > 0 ? (
+              relatedTutorials.map((vid, i) => {
+                const p = parseVideoUrl(vid.url);
+                if (!p) return null;
+                return (
+                  <VideoCard
+                    key={i}
+                    videoId={p.id}
+                    provider={p.provider}
+                    title={vid.title}
+                    level={vid.level as "Beginner" | "Intermediate" | "Advanced"}
+                  />
+                );
+              })
+            ) : (
+              <div className="text-center py-10 bg-white/5 rounded-2xl border border-white/10 shadow-inner">
+                <p className="text-white/40 text-sm font-medium">No related tutorials found.</p>
               </div>
-            </>
-          ) : (
-            <p className="text-gray-500 italic">
-              No related tutorials available.
-            </p>
-          )}
+            )}
+          </ScrollShadow>
         </aside>
       </main>
     </DefaultLayout>

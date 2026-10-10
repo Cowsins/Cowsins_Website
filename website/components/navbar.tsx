@@ -49,6 +49,12 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
       "_blank",
     );
   };
+  const openMultiplayerDocs = () => {
+    window.open(
+      "https://cowsinss-organization.gitbook.io/multiplayer-add-on/",
+      "_blank",
+    );
+  };
   const openInventoryDocs = () => {
     window.open(
       "https://cowsinss-organization.gitbook.io/inventory-pro-add-on-documentation",
@@ -140,6 +146,19 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                       href={siteConfig.links.fpsengine}
                     >
                       FPS Engine
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem
+                    key="multiplayeraddon"
+                    description="Seamless Networking"
+                  >
+                    <Link
+                      isExternal
+                      showAnchorIcon
+                      color="foreground"
+                      href={siteConfig.links.multiplayeraddon}
+                    >
+                      Multiplayer Add-On
                     </Link>
                   </DropdownItem>
                   <DropdownItem
@@ -252,6 +271,9 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                 <DropdownSection showDivider title="Unity">
                   <DropdownItem key="fpsengine" onPress={openFPSEngineDocs}>
                     FPS Engine
+                  </DropdownItem>
+                  <DropdownItem key="multiplayeraddon" onPress={openMultiplayerDocs}>
+                    Multiplayer Add-On
                   </DropdownItem>
                   <DropdownItem key="platformerengine" onPress={openPlatformerEngineDocs}>
                     Platformer Engine
@@ -435,6 +457,19 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
                   </Link>
                 </DropdownItem>
                 <DropdownItem
+                  key="multiplayeraddon"
+                  description="Seamless Networking"
+                >
+                  <Link
+                    isExternal
+                    showAnchorIcon
+                    color="foreground"
+                    href={siteConfig.links.multiplayeraddon}
+                  >
+                    Multiplayer Add-On
+                  </Link>
+                </DropdownItem>
+                <DropdownItem
                   key="platformerengine"
                   description="Best Platformer Toolkit"
                 >
@@ -518,6 +553,9 @@ export const Navbar = ({ onTutorialsClick }: NavbarProps) => {
               <DropdownSection showDivider title="Unity">
                 <DropdownItem key="fpsengine" onPress={openFPSEngineDocs}>
                   FPS Engine
+                </DropdownItem>
+                <DropdownItem key="multiplayeraddon" onPress={openMultiplayerDocs}>
+                  Multiplayer Add-On
                 </DropdownItem>
                 <DropdownItem key="platformerengine" onPress={openPlatformerEngineDocs}>
                   Platformer Engine

@@ -16,6 +16,15 @@ const CowsinsAssets = () => {
         title="FPS Engine"
       />
       <AssetCard
+        imageSrc1="MultiplayerFPSEngine.png"
+        imageSrc2=""
+        imageSrc3=""
+        isFree={false}
+        link={siteConfig.links.multiplayeraddon}
+        subtitle="FPS Engine Add-On"
+        title="Multiplayer Add-On for FPS Engine"
+      />
+      <AssetCard
         imageSrc1="2d-engine.webp"
         imageSrc2="PlatformerEngine.webp"
         imageSrc3=""

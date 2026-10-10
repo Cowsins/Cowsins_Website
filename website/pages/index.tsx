@@ -1,6 +1,7 @@
-import { Tabs, Tab, Alert } from "@heroui/react";
+import { Tabs, Tab, Alert, Button } from "@heroui/react";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { addToast } from "@heroui/toast";
 
 import DefaultLayout from "@/layouts/default";
 import { title, subtitle } from "@/components/primitives";
@@ -9,12 +10,41 @@ import CowsinsAssets from "@/components/CowsinsAssets";
 import CommunityAssets from "@/components/CommunityAssets";
 import CowsinsAddons from "@/components/CowsinsAddons";
 import FAQAccordion from "@/components/FAQAccordion";
+import { siteConfig } from "@/config/site";
 
 import Footer from "../components/Footer";
 import styles from "../styles/custom.module.css";
 
 export default function IndexPage() {
   const [selected, setSelected] = React.useState("All");
+  const toastTriggered = React.useRef(false);
+
+  React.useEffect(() => {
+    if (toastTriggered.current) return;
+    toastTriggered.current = true;
+
+    setTimeout(() => {
+      addToast({
+        title: "Multiplayer Add-On Released! 🚀",
+        description: "Seamlessly add networking to your FPS Engine games.",
+        color: "default",
+        timeout: 0,
+        classNames: {
+          base: "w-full sm:min-w-[480px] sm:w-fit p-3 gap-3",
+          icon: "w-10 h-10 max-w-none flex-shrink-0",
+          title: "text-sm sm:text-base font-bold sm:whitespace-nowrap",
+          description: "text-[11px] sm:text-xs text-default-500 sm:whitespace-nowrap",
+          content: "flex-1",
+        },
+        icon: <img src="/MultiplayerFPSEngine_Icon.png" alt="Multiplayer Add-On" className="w-full h-full rounded-md object-cover" />,
+        endContent: (
+          <Button size="sm" color="primary" variant="shadow" onPress={() => window.open(siteConfig.links.multiplayeraddon, "_blank")}>
+            View
+          </Button>
+        ),
+      });
+    }, 500);
+  }, []);
 
   const getHeading = () => {
     switch (selected) {

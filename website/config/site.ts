@@ -15,6 +15,7 @@ export const siteConfig = {
     discord: "https://discord.gg/759gSeTT9m",
     fpsengine:
       "https://assetstore.unity.com/packages/templates/systems/fps-engine-218594",
+    multiplayeraddon: "#",
     platformerengine:
       "https://assetstore.unity.com/packages/templates/systems/2d-platformer-engine-266973",
     bullethellengine:

@@ -20,7 +20,10 @@ import {
   FaGamepad,
   FaSkull,
   FaRunning,
-  FaSearch
+  FaSearch,
+  FaUsers,
+  FaChevronDown,
+  FaChevronUp
 } from "react-icons/fa";
 
 import VideoCard from "./VideoCard";
@@ -35,6 +38,7 @@ interface TutorialsModalProps {
 
 const categories = [
   { id: "FPS Engine", label: "FPS Engine", icon: FaCrosshairs },
+  { id: "Multiplayer Add-On", label: "Multiplayer Add-On", icon: FaUsers },
   { id: "Inventory Pro Add-On", label: "Inventory Pro Add-On", icon: FaBoxOpen },
   { id: "Save & Load Add-On", label: "Save & Load Add-On", icon: FaSave },
   { id: "Platformer Engine", label: "Platformer Engine", icon: FaGamepad },
@@ -42,6 +46,61 @@ const categories = [
   { id: "Legs + IKs Add-On", label: "Legs + IKs", icon: FaRunning },
   { id: "OmniSave", label: "OmniSave", icon: FaSave },
 ];
+
+const SeriesSection = ({ seriesName, seriesVideos }: { seriesName: string, seriesVideos: any[] }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <div className="flex flex-col bg-white/5 border border-white/10 rounded-xl px-4 py-3 shadow-sm transition-colors hover:bg-white/10">
+      <div 
+        className="flex flex-row items-center justify-between cursor-pointer group"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div className="flex flex-row items-center gap-3">
+          <h3 className="text-base font-semibold text-white/90">{seriesName}</h3>
+          <span className="text-xs font-medium text-white/50 bg-black/30 px-2 py-0.5 rounded-full">{seriesVideos.length} Lessons</span>
+        </div>
+        <Button 
+          isIconOnly
+          variant="light"
+          size="sm"
+          radius="full"
+          className="text-white/60 group-hover:text-white"
+          onPress={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
+        </Button>
+      </div>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 pb-2">
+              {seriesVideos.map((video, i) => {
+                const parsed = parseVideoUrl(video.url);
+                if (!parsed) return null;
+                return (
+                  <VideoCard
+                    key={i}
+                    videoId={parsed.id}
+                    provider={parsed.provider}
+                    title={video.title}
+                    level={video.level as "Beginner" | "Intermediate" | "Advanced"}
+                  />
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 const TutorialsModal: React.FC<TutorialsModalProps> = ({
   isOpen,
@@ -241,22 +300,38 @@ const TutorialsModal: React.FC<TutorialsModalProps> = ({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.2 }}
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                  className="flex flex-col gap-6"
                 >
                   {filteredVideos.length > 0 ? (
-                    filteredVideos.map((video, i) => {
-                      const parsed = parseVideoUrl(video.url);
-                      if (!parsed) return null;
-                      return (
-                        <VideoCard
-                          key={i}
-                          videoId={parsed.id}
-                          provider={parsed.provider}
-                          title={video.title}
-                          level={video.level as "Beginner" | "Intermediate" | "Advanced"}
-                        />
-                      );
-                    })
+                    <>
+                      {Array.from(new Set(filteredVideos.map((v: any) => v.series).filter(Boolean))).map(seriesName => {
+                        const seriesVideos = filteredVideos.filter((v: any) => v.series === seriesName);
+                        const chronologicalSeries = [...seriesVideos].reverse();
+                        return (
+                          <SeriesSection key={seriesName as string} seriesName={seriesName as string} seriesVideos={chronologicalSeries} />
+                        );
+                      })}
+                      <div className="flex flex-col">
+                        {Array.from(new Set(filteredVideos.map((v: any) => v.series).filter(Boolean))).length > 0 && (
+                          <h3 className="text-lg font-bold mb-4 text-white/90">All Lessons</h3>
+                        )}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {filteredVideos.map((video, i) => {
+                            const parsed = parseVideoUrl(video.url);
+                            if (!parsed) return null;
+                            return (
+                              <VideoCard
+                                key={i}
+                                videoId={parsed.id}
+                                provider={parsed.provider}
+                                title={video.title}
+                                level={video.level as "Beginner" | "Intermediate" | "Advanced"}
+                              />
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </>
                   ) : (
                     <div className="col-span-full flex flex-col items-center justify-center py-20 text-center">
                       <div className="p-4 rounded-full bg-white/5 mb-4">
