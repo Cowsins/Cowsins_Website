@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
-import Plyr from "plyr";
 import "plyr/dist/plyr.css";
 import { videos, parseVideoUrl, getThumbnailUrl, VideoProvider } from "@/utils/videos";
 import DefaultLayout from "@/layouts/default";
@@ -99,23 +98,33 @@ const VideoPage: React.FC<Props> = ({
 
     const plyrProvider = provider === "youtube" ? "youtube" : "vimeo";
 
-    const player = new Plyr(iframe, {
-      controls: [
-        "play",
-        "progress",
-        "current-time",
-        "mute",
-        "volume",
-        "captions",
-        "settings",
-        "pip",
-        "airplay",
-        "fullscreen",
-      ],
+    let player: any;
+    let isCancelled = false;
+
+    import("plyr").then((mod) => {
+      if (isCancelled) return;
+      const Plyr = mod.default || mod;
+      player = new (Plyr as any)(iframe, {
+        controls: [
+          "play",
+          "progress",
+          "current-time",
+          "mute",
+          "volume",
+          "captions",
+          "settings",
+          "pip",
+          "airplay",
+          "fullscreen",
+        ],
+      });
     });
 
     return () => {
-      player.destroy();
+      isCancelled = true;
+      if (player) {
+        player.destroy();
+      }
     };
   }, [videoId, provider]);
 
